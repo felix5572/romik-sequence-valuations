@@ -29,13 +29,14 @@
 \begin{document}
 
 \begin{abstract}
-Romik's sequence $(d(n))_{n\ge 0}=1,1,-1,51,849,-26199,\dots$ records the Taylor
-coefficients of the Jacobi theta constant $\theta_3$ at the CM point $\tau=i$. For a prime
-$p\equiv 3\pmod 4$ we prove
-$v_p(d(n))\ge v_p\bigl((4n)!\bigr)-v_p\bigl((p\lfloor 4n/(p+1)\rfloor)!\bigr)$,
-and we show that equality holds if and only if $p\nmid d(r)$, where $r$ is the residue of $n$
-modulo $(p+1)/4$. The lower bound implies a conjecture of Krattenthaler and M\"uller:
-$d(n)\equiv 0 \pmod{p^e}$ for all $n\ge \lceil ep^2/4\rceil$. The proof identifies $d(n)$ with
+Romik's integers $d(n)$, with $(d(n))_{n\ge 0}=1,1,-1,51,849,-26199,\dots$, are the normalised
+coefficients in the centred Taylor expansion of the Jacobi theta constant $\theta_3$ at the CM
+point $\tau=i$. For every prime $p\equiv 3\pmod 4$ and every $e\ge1$ we prove that $p^e\mid d(n)$
+whenever $n\ge \lceil ep^2/4\rceil$, as conjectured by Krattenthaler and M\"uller. For $e=1$, the
+last index $n$ with $p\nmid d(n)$ is exactly $(p^2-1)/4$. These statements follow from the bound
+$v_p(d(n))\ge v_p\bigl((4n)!\bigr)-v_p\bigl((p\lfloor 4n/(p+1)\rfloor)!\bigr)$, for which we show
+that equality holds if and only if $p\nmid d(r)$, where $r$ is the residue of $n$ modulo
+$(p+1)/4$. The proof identifies $d(n)$ with
 Taylor coefficients of $\sigma(z)\sqrt{\wp(z)}$ on the lemniscatic curve and uses the estimates of
 Bannai, Kobayashi and Yasuda for Weierstrass functions at supersingular primes. By an elementary argument we also bound the valuations of Romik's auxiliary
 sequences $u(n)$ and $v(n)$, which proves parts (1) and (2) of another conjecture of Krattenthaler
@@ -83,8 +84,8 @@ In particular, equality holds in \textup{(i)} if and only if $p\nmid d(r)$.
 \end{enumerate}
 \end{theorem}
 
-Since $v_p((pm)!)=m+v_p(m!)$, part (i) says that $d(n)/(4n)!$ has at worst the denominator of the
-coefficient of $z^{(p+1)m}$ in $\exp(z^{p+1}/p)$.
+Since $v_p((pm)!)=m+v_p(m!)$, part (i) says that the $p$-part of the denominator of $d(n)/(4n)!$
+is at most that of the coefficient of $z^{(p+1)m}$ in $\exp(z^{p+1}/p)$.
 
 \begin{corollary}\label{cor:KM}
 Let $p\equiv3\pmod4$. Then $v_p(d(n))\ge\fl{4n/p^2}$ for all $n\ge0$. In particular
@@ -97,7 +98,8 @@ Let $p\equiv3\pmod4$. Then $d(n)\equiv0\pmod p$ for all $n>(p^2-1)/4$, and
 $p\nmid d\bigl((p^2-1)/4\bigr)$.
 \end{corollary}
 
-Theorem~\ref{thm:main} is the specialisation of a statement about Weierstrass functions. For the
+Theorem~\ref{thm:main} and Theorem~\ref{thm:sigma} below follow from the same coefficient
+congruence, applied to $\sigma(z)\sqrt{\wp(z)}$ and to $\sigma(z)/z$, respectively. For the
 Weierstrass $\sigma$-function of an elliptic curve with supersingular reduction, the lower bound
 $v_p(a_n)\ge-\tau_{n-1}$ of Theorem~\ref{thm:sigma} below is a theorem of Bannai, Kobayashi and
 Yasuda \cite[Theorem~5.6]{BKY}, who prove equality for the orders $n=p^k(p+1)+1$. Our proofs use
@@ -338,8 +340,8 @@ $\sigma_e(z)=\sigma(z)\sqrt{\wp(z)-e}\in1+zK[[z]]$. Then $\sigma_e\in D$.
 
 \begin{proof}
 By Theorem~\ref{thm:bky}(b), $g(z):=z^2(\wp(z)-e)$ satisfies $g-1\in R\cap zK[[z]]$. Since $p$
-is odd, the binomial series $g^{1/2}=\sum_k\binom{1/2}{k}(g-1)^k$ has coefficients in $\Z_p$ and
-converges $z$-adically, so $g^{1/2}\in R\subset\Lambda$. Now $\sigma_e=(\sigma(z)/z)\cdot g^{1/2}$ and $\sigma(z)/z\in D$ by
+is odd, $\binom{1/2}{k}\in\Z_p$ for every $k$. The series $g^{1/2}=\sum_k\binom{1/2}{k}(g-1)^k$
+therefore converges $z$-adically to an element of $R\subset\Lambda$. Now $\sigma_e=(\sigma(z)/z)\cdot g^{1/2}$ and $\sigma(z)/z\in D$ by
 Theorem~\ref{thm:bky}(a).
 \end{proof}
 
@@ -695,50 +697,50 @@ $\partial_k(f|_k\gamma)=(\partial_kf)|_{k+2}\gamma$. Let
 \[
 \vartheta_K(z)=\sum_{\lambda\in\Z[i]}e^{2\pi iN(\lambda)z}=\theta_3(-2iz)^2 ,
 \]
-let $L_p$ be the Laguerre polynomial $L_p(t)=\sum_{j=0}^p\binom pj\frac{(-t)^j}{j!}$, and let
-$H_p$ be the Hermite polynomial, $e^{2xt-t^2}=\sum_pH_p(x)t^p/p!$. Throughout the proof $p=2h$ is
+let $L_\ell$ be the Laguerre polynomial $L_\ell(t)=\sum_{j=0}^\ell\binom{\ell}{j}\frac{(-t)^j}{j!}$, and let
+$H_\ell$ be the Hermite polynomial, $e^{2xt-t^2}=\sum_{\ell}H_\ell(x)t^\ell/\ell!$. Throughout the proof $\ell=2h$ is
 an even integer $\ge0$, and
 \[
-\Lambda_s(\lambda)=\frac{\bar\lambda^{\,2p+1}}{|\lambda|^{2p+2+2s}}\qquad(\lambda\in\Z[i],\ \lambda\ne0).
+\Lambda_s(\lambda)=\frac{\bar\lambda^{\,2\ell+1}}{|\lambda|^{2\ell+2+2s}}\qquad(\lambda\in\Z[i],\ \lambda\ne0).
 \]
 
 \begin{proof}[Proof of Theorem~\ref{thm:Lvalue}]
 \emph{Step 1: the $L$-value as a value of Eisenstein series.} Let $\epsilon$ be the non-trivial
 Dirichlet character modulo $4$ and, for $\operatorname{Re}s>\frac12$,
 \[
-E_p(z,s)=\frac12\sum_{(n,m)\ne(0,0)}\epsilon(n)\,\frac{(n+4m\bar z)^{2p+1}}{|n+4mz|^{2p+2+2s}} .
+E_\ell(z,s)=\frac12\sum_{(n,m)\ne(0,0)}\epsilon(n)\,\frac{(n+4m\bar z)^{2\ell+1}}{|n+4mz|^{2\ell+2+2s}} .
 \]
-By Hecke's method \cite{Hecke27}, $E_p(z,s)$ continues analytically to $s=0$ (see Step~2); put $E_p(z)=E_p(z,0)$. We have
-$E_p(i,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and $b\equiv0\pmod4$, and
-$E_p(i/2,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and even $b$. Let $P_0(s)$ and
+By Hecke's method \cite{Hecke27}, $E_\ell(z,s)$ continues analytically to $s=0$ (see Step~2); put $E_\ell(z)=E_\ell(z,0)$. We have
+$E_\ell(i,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and $b\equiv0\pmod4$, and
+$E_\ell(i/2,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and even $b$. Let $P_0(s)$ and
 $P_2(s)$ be the sums of $\Lambda_s(\alpha)$ over the $\alpha=a+bi\equiv1\pmod{2+2i}$ with
 $b\equiv0$, respectively $b\equiv2\pmod4$. If $a$ is odd and $b\equiv0\pmod4$, then exactly one of
 $\pm(a+bi)$ is $\equiv1\pmod{2+2i}$, namely the one with real part $\equiv1\pmod4$; if
 $b\equiv2\pmod4$ it is the one with real part $\equiv3\pmod4$. Since
 $\Lambda_s(-\lambda)=-\Lambda_s(\lambda)$, this gives
 \[
-E_p(i,s)=P_0(s),\qquad E_p(i/2,s)=P_0(s)-P_2(s).
+E_\ell(i,s)=P_0(s),\qquad E_\ell(i/2,s)=P_0(s)-P_2(s).
 \]
 The set of $\alpha\equiv1\pmod{2+2i}$ is stable under complex conjugation, so
-$L(\psi^{2p+1},p+1+s)=P_0(s)+P_2(s)$, and at $s=0$
+$L(\psi^{2\ell+1},\ell+1+s)=P_0(s)+P_2(s)$, and at $s=0$
 \begin{equation}\label{eq:L-eis}
-L(\psi^{2p+1},p+1)=2E_p(i)-E_p(i/2).
+L(\psi^{2\ell+1},\ell+1)=2E_\ell(i)-E_\ell(i/2).
 \end{equation}
 
-\emph{Step 2: Eisenstein series and $\vartheta_K$.} For $p=0$, Hecke's identity
+\emph{Step 2: Eisenstein series and $\vartheta_K$.} For $\ell=0$, Hecke's identity
 $E_0(z)=\frac\pi4\vartheta_K(z)$ holds (see \cite[proof of Proposition~2.7]{Nomoto}; it is
 equivalent to Jacobi's formula $r_2(N)=4\sum_{d\mid N}\epsilon(d)$ for the number of
-representations of $N$ as a sum of two squares \cite[Theorem~278]{HW}). Applying $\partial_1^{(p)}$, by
+representations of $N$ as a sum of two squares \cite[Theorem~278]{HW}). Applying $\partial_1^{(\ell)}$, by
 \cite[(16)]{VZ},
 \begin{equation}\label{eq:eis-theta}
-\frac\pi4\,\partial_1^{(p)}\vartheta_K(z)=\frac{p!}{(4\pi y)^p}\,E_p(z).
+\frac\pi4\,\partial_1^{(\ell)}\vartheta_K(z)=\frac{\ell!}{(4\pi y)^\ell}\,E_\ell(z).
 \end{equation}
 Here the differentiation is carried out for $\operatorname{Re}s>\frac12$ and then continued to
 $s=0$: writing $\rho=(n+4m\bar z)/(n+4mz)$ and $\phi_s=(n+4mz)^{-1}|n+4mz|^{-2s}$, one finds
 $\partial_{1+2j}\bigl(y^{-j}\rho^i\phi_s\bigr)=(4\pi)^{-1}y^{-j-1}\bigl((s+i-j)\rho^i\phi_s
 -(1+i+s)\rho^{i+1}\phi_s\bigr)$, so that
-$\partial_1^{(p)}\phi_s=(4\pi y)^{-p}\sum_{i\le p}c_i(s)\rho^i\phi_s$ with polynomials $c_i$
-satisfying $c_i(0)=0$ for $i<p$ and $c_p(0)=p!$ (recall that $p$ is even).
+$\partial_1^{(\ell)}\phi_s=(4\pi y)^{-\ell}\sum_{i\le \ell}c_i(s)\rho^i\phi_s$ with polynomials $c_i$
+satisfying $c_i(0)=0$ for $i<\ell$ and $c_\ell(0)=\ell!$ (recall that $\ell$ is even).
 
 It remains to justify the continuation to $s=0$ and its compatibility with differentiation. Fix
 $m$ and $i$ and write $F(n)=\rho^i\phi_s$. Since $\epsilon(n+2)=-\epsilon(n)$, for
@@ -748,7 +750,8 @@ $\operatorname{Re}s>\frac12$
 \]
 The second difference on the right is $O\bigl(|n+4mz|^{-3-2\operatorname{Re}s}\bigr)$, locally
 uniformly in $z$, and the same estimate holds after any fixed number of derivatives with respect
-to $x$ and $y$. Hence the double series over $(n,m)$ obtained in this way, and its derivatives,
+to $x$ and $y$: with $w=n+4mz$ we have $|m|\le|w|/(4\operatorname{Im}z)$, so each factor $m$
+produced by a differentiation is absorbed by the additional factor $|w|$ in the denominator. Hence the double series over $(n,m)$ obtained in this way, and its derivatives,
 converge absolutely and locally uniformly for $\operatorname{Re}s>-\frac12$. This continues
 $\sum\epsilon(n)\rho^i\phi_s$ to a neighbourhood of $s=0$ and shows that the continuation commutes
 with differentiation in $z$; compare the remark following \cite[(22)]{VZ}.
@@ -757,50 +760,50 @@ with differentiation in $z$; compare the remark following \cite[(22)]{VZ}.
 $\vartheta_K(-1/(4z))=-2iz\,\vartheta_K(z)$, that is, $\vartheta_K|_1\gamma=-i\,\vartheta_K$ for
 $\gamma=\bigl(\begin{smallmatrix}0&-1\\4&0\end{smallmatrix}\bigr)$. Hence
 \[
-(2z)^{-2p-1}\,\bigl(\partial_1^{(p)}\vartheta_K\bigr)(-1/(4z))=-i\,\partial_1^{(p)}\vartheta_K(z),
+(2z)^{-2\ell-1}\,\bigl(\partial_1^{(\ell)}\vartheta_K\bigr)(-1/(4z))=-i\,\partial_1^{(\ell)}\vartheta_K(z),
 \]
-and at $z=i$, since $p$ is even,
+and at $z=i$, since $\ell$ is even,
 \begin{equation}\label{eq:fricke}
-\partial_1^{(p)}\vartheta_K(i/4)=2^{2p+1}\,\partial_1^{(p)}\vartheta_K(i).
+\partial_1^{(\ell)}\vartheta_K(i/4)=2^{2\ell+1}\,\partial_1^{(\ell)}\vartheta_K(i).
 \end{equation}
 By \eqref{eq:L-eis}, \eqref{eq:eis-theta} and \eqref{eq:fricke},
 \begin{equation}\label{eq:L-A}
-L(\psi^{2p+1},p+1)=\frac{\pi^{p+1}}{8\,p!}\,A_p,
+L(\psi^{2\ell+1},\ell+1)=\frac{\pi^{\ell+1}}{8\,\ell!}\,A_\ell,
 \end{equation}
 where
-$A_p:=\partial_1^{(p)}\vartheta_K(i/4)-2^{p+1}\partial_1^{(p)}\vartheta_K(i/2)
-+2^{2p+1}\partial_1^{(p)}\vartheta_K(i)$.
+$A_\ell:=\partial_1^{(\ell)}\vartheta_K(i/4)-2^{\ell+1}\partial_1^{(\ell)}\vartheta_K(i/2)
++2^{2\ell+1}\partial_1^{(\ell)}\vartheta_K(i)$.
 
-\emph{Step 4: Laguerre sums and the factorisation formula.} By \cite[(9)]{VZ}, for even $p$,
+\emph{Step 4: Laguerre sums and the factorisation formula.} By \cite[(9)]{VZ}, for even $\ell$,
 \[
-\partial_1^{(p)}\vartheta_K(z)=\frac{p!}{(4\pi y)^p}\sum_{\lambda\in\Z[i]}L_p\bigl(4\pi N(\lambda)y\bigr)
+\partial_1^{(\ell)}\vartheta_K(z)=\frac{\ell!}{(4\pi y)^\ell}\sum_{\lambda\in\Z[i]}L_\ell\bigl(4\pi N(\lambda)y\bigr)
 e^{2\pi iN(\lambda)z}.
 \]
 For $\lambda=n+mi$ the number $nm$ is odd exactly when $\lambda\in(1+i)\Z[i]\setminus2\Z[i]$.
 Evaluating the last formula at $z=i/4$, $i/2$ and $i$ therefore gives
 \[
-A_p=\frac{p!}{\pi^p}\sum_{n,m\in\Z}(-1)^{nm}\,L_p\bigl(\pi(n^2+m^2)\bigr)\,e^{-\pi(n^2+m^2)/2}.
+A_\ell=\frac{\ell!}{\pi^\ell}\sum_{n,m\in\Z}(-1)^{nm}\,L_\ell\bigl(\pi(n^2+m^2)\bigr)\,e^{-\pi(n^2+m^2)/2}.
 \]
 The factorisation formula of Rodriguez Villegas and Zagier \cite[(23)]{VZ} with $a=1$,
 $\alpha=0$, $\mu=\nu=0$ and $z=i$ states that the
-right-hand side equals $\sqrt2\,(2\pi)^{-p}\,\eta_p^2$, where
+right-hand side equals $\sqrt2\,(2\pi)^{-\ell}\,\eta_\ell^2$, where
 \[
-\eta_p=\sum_{n\in\Z}H_p\bigl(n\sqrt{2\pi}\bigr)\,e^{-\pi n^2}.
+\eta_\ell=\sum_{n\in\Z}H_\ell\bigl(n\sqrt{2\pi}\bigr)\,e^{-\pi n^2}.
 \]
 
 \emph{Step 5: Hermite sums and $d(n)$.} Let $\Theta(u)=e^{\pi u^2/2}\sum_ne^{-\pi n^2+2\pi inu}$ be
 as in the proof of Proposition~\ref{prop:identify}. Since
 $e^{\pi u^2/2+2\pi inu}=e^{2xt-t^2}$ with $t=i\sqrt{\pi/2}\,u$ and $x=n\sqrt{2\pi}$, we get
-$\Theta^{(p)}(0)=(-\pi/2)^{p/2}\,\eta_p$, hence $\eta_p^2=(2/\pi)^p\,\Theta^{(p)}(0)^2$. Together
+$\Theta^{(\ell)}(0)=(-\pi/2)^{\ell/2}\,\eta_\ell$, hence $\eta_\ell^2=(2/\pi)^\ell\,\Theta^{(\ell)}(0)^2$. Together
 with \eqref{eq:L-A} and Step~4,
 \begin{equation}\label{eq:L-Theta}
-L(\psi^{2p+1},p+1)=\frac{\sqrt2}{8\,p!\,\pi^{p-1}}\;\Theta^{(p)}(0)^2\qquad(p=2h\ge0).
+L(\psi^{2\ell+1},\ell+1)=\frac{\sqrt2}{8\,\ell!\,\pi^{\ell-1}}\;\Theta^{(\ell)}(0)^2\qquad(\ell=2h\ge0).
 \end{equation}
 In the proof of Proposition~\ref{prop:identify} we showed $\Theta^{(2k)}(0)=0$ for odd $k$, which
-gives $L(\psi^{8n+5},4n+3)=0$ (the case $p=4n+2$), and
+gives $L(\psi^{8n+5},4n+3)=0$ (the case $\ell=4n+2$), and
 $\Theta^{(4n)}(0)=\theta_3(1)\,d(n)\,(4\pi^2\Phi)^n$ with $4\pi^2\Phi=2\varpi^4$. Finally
 $\theta_3(1)=\Gamma(1/4)/(\sqrt2\,\pi^{3/4})$ \cite[Section~1]{Romik}, so
-$\theta_3(1)^2=\sqrt2\,\varpi/\pi$. Inserting this into \eqref{eq:L-Theta} with $p=4n$ gives
+$\theta_3(1)^2=\sqrt2\,\varpi/\pi$. Inserting this into \eqref{eq:L-Theta} with $\ell=4n$ gives
 \[
 L(\psi^{8n+1},4n+1)=\frac{\sqrt2}{8\,(4n)!\,\pi^{4n-1}}\cdot\frac{\sqrt2\,\varpi}{\pi}\cdot
 4^n\varpi^{8n}\,d(n)^2=\frac{\varpi^{8n+1}}{\pi^{4n}\,(4n)!}\,4^{n-1}\,d(n)^2 .\qedhere
@@ -814,11 +817,11 @@ Theorem~\ref{thm:main}.
 
 \begin{remark}\label{rem:Lcheck}
 The following parts of the proof were checked numerically to $60$ decimal digits for
-$p=2h\le20$ (script \texttt{l\_value\_proof\_check.py} in the directory \texttt{romik/}): the
-case of the factorisation formula used in Step~4; the expression of $A_p$ as a Laguerre sum;
-the combination of \eqref{eq:L-eis} and \eqref{eq:eis-theta}, with $L(\psi^{2p+1},p+1)$ computed
+$\ell=2h\le20$ (script \texttt{l\_value\_proof\_check.py} in the directory \texttt{romik/}): the
+case of the factorisation formula used in Step~4; the expression of $A_\ell$ as a Laguerre sum;
+the combination of \eqref{eq:L-eis} and \eqref{eq:eis-theta}, with $L(\psi^{2\ell+1},\ell+1)$ computed
 independently; \eqref{eq:fricke}; \eqref{eq:L-A} and \eqref{eq:L-Theta}; and the formula for
-$\Theta^{(4n)}(0)$. The series $E_p(z,s)$ for $s\ne0$, the sums $P_0(s)$ and $P_2(s)$ and the
+$\Theta^{(4n)}(0)$. The series $E_\ell(z,s)$ for $s\ne0$, the sums $P_0(s)$ and $P_2(s)$ and the
 recursion in Step~2 were not checked numerically. The statement of
 Theorem~\ref{thm:Lvalue} was checked for $n\le8$ against an independent computation of the
 central values:
@@ -896,7 +899,8 @@ and \texttt{Quot.sound}.
 
 \begin{enumerate}
 \item[(1)] \emph{The sequences $u(n)$ and $v(n)$: complete.} The files \texttt{Conj43.lean} and
-\texttt{VSeq.lean} define $u(n)$ and $v(n)$ by the recurrences of \cite[\S2]{KM},
+\texttt{VSeq.lean} define $u(n)$ and $v(n)$ by the recurrences of \cite[\S2]{KM}: $u(0)=v(0)=1$
+and, for $n\ge1$,
 \begin{align*}
 u(n)&=\Pi_1(n)-\sum_{m<n}\binom{2n+1}{2m+1}\Pi_3(n-m)\,u(m),\\
 v(n)&=2^{n-1}\Pi_3(n)-\frac12\sum_{0<m<n}\binom{2n}{2m}v(m)\,v(n-m),
