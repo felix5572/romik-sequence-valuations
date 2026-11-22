@@ -189,15 +189,21 @@ def check_lattice(lattice: Lattice, max_degree: int, integer_limit: int) -> None
     print(f"== {lattice.name}, degrees up to {2 * top}")
     for p in lattice.primes:
         failures = integer_inequality_failures(lattice, p, integer_limit)
+        results = (
+            ("1 weight of z^2 wp        ", check_weight(wp, p)),
+            ("3 Dwork defect in D       ", check_in_ring(dwork_defect(log_sigma, p), p)),
+            ("4 sigma/z in D            ", check_in_ring(sigma_over_z, p)),
+            ("4 sigma*sqrt(wp) in D     ", check_in_ring(theta, p)),
+            ("6 defect in p*D past p+1  ", check_defect_strict(dwork_defect(log_sigma, p), p)),
+            ("6 leading term, sigma/z   ", check_leading_congruence(sigma_over_z, p)),
+            ("6 leading term, theta     ", check_leading_congruence(theta, p)),
+        )
         print(f" p={p}")
-        print(f"   1 weight of z^2 wp        : {check_weight(wp, p)}")
         print(f"   2 integer inequalities    : {len(failures)} failures up to {integer_limit} {failures[:6]}")
-        print(f"   3 Dwork defect in D       : {check_in_ring(dwork_defect(log_sigma, p), p)}")
-        print(f"   4 sigma/z in D            : {check_in_ring(sigma_over_z, p)}")
-        print(f"   4 sigma*sqrt(wp) in D     : {check_in_ring(theta, p)}")
-        print(f"   6 defect in p*D past p+1  : {check_defect_strict(dwork_defect(log_sigma, p), p)}")
-        print(f"   6 leading term, sigma/z   : {check_leading_congruence(sigma_over_z, p)}")
-        print(f"   6 leading term, theta     : {check_leading_congruence(theta, p)}")
+        for label, text in results:
+            print(f"   {label}: {text}")
+        require(not failures, (lattice.name, p, failures[:6]))
+        require(all(text.startswith("ok") for _, text in results), (lattice.name, p))
 
 
 def check_romik_identification(d_pickle: str, max_degree: int) -> None:
@@ -213,8 +219,7 @@ def check_romik_identification(d_pickle: str, max_degree: int) -> None:
     mismatches = tuple(n for n, ratio in enumerate(ratios, start=1) if ratio != kappa**n)
     print(f"== Romik identification: d(n) = kappa^n (4n)! [z^(4n)] sigma sqrt(wp), kappa = {kappa}")
     print(f"   checked n = 1..{count}: {len(mismatches)} mismatches {mismatches[:6]}")
-    if mismatches:
-        print("   first ratios:", [str(r) for r in ratios[:6]])
+    require(not mismatches, ("identification", mismatches[:6], [str(r) for r in ratios[:6]]))
 
 
 def main() -> None:

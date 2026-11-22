@@ -42,7 +42,10 @@ Numbers refer to the paper.
 
 The two cited inputs are the bounds of Bannai, Kobayashi and Yasuda for the coefficients of the
 Weierstrass zeta function at supersingular primes (Math. Z. 286 (2017), Corollary 5.5) and
-Proposition 4.1 of the paper.
+Proposition 4.1 of the paper. The Lean statements are for power series with rational
+coefficients; the paper allows a finite unramified extension of ℚ_p. The Lean theorem for
+Theorem 1.4 gives the congruence; that the constant ν in it is a p-adic unit is proved in the
+paper and is not part of that Lean statement.
 
 ## Reproducing
 
@@ -56,7 +59,7 @@ Numerical checks (Python 3 with `mpmath` and `gmpy2`; run from the directory `ro
 times are approximate):
 
     python3 romik.py 1600 d800.pkl                   # recompute d(n) for n <= 800
-    python3 main_theorem_check.py d800.pkl 1000      # Theorem 1.1 and the data of Section 8 (1 s)
+    python3 main_theorem_check.py d800.pkl 1000      # Theorem 1.1, including the congruence, and the data of Section 8 (1 s)
     python3 lean_hypotheses_check.py 1200 d800.pkl   # hypotheses of the Lean theorem romik_main (10 s)
     python3 recursion_check.py d800.pkl 200          # Romik's recursion for d(n) (45 s)
     python3 lower_bound_check.py 1200 1000000 d800.pkl   # the ring D and the leading congruence (25 s)

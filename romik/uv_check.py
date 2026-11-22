@@ -16,6 +16,7 @@ usage: python3 uv_check.py UV_PICKLE PRIME_LIMIT
 import pickle
 import sys
 
+from checks import require
 from lower_bound_check import vp_factorial, vp_int
 
 
@@ -81,6 +82,9 @@ def main() -> None:
     print(" 3 threshold violations (e <= 60):", {p: b for p, b in bad_thresholds.items() if b})
     bad_split = {p: tuple(n for n, x in enumerate(v) if vp_int(x, p) < vp_factorial(2 * n, p))[:3] for p in split}
     print(" 4 p = 1 (mod 4), v_p(v(n)) >= v_p((2n)!) violated at:", {p: b for p, b in bad_split.items() if b})
+    checks = (("u", bad_u), ("v", bad_v), ("series", bad_series), ("thresholds", bad_thresholds), ("split", bad_split))
+    for name, bad in checks:
+        require(not any(bad.values()), (name, {p: b for p, b in bad.items() if b}))
 
 
 if __name__ == "__main__":

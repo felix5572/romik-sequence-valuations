@@ -656,7 +656,22 @@ with equality if and only if $p\nmid d(r)$.
 \end{corollary}
 
 The primes $p\equiv3\pmod4$ are those inert in $\Q(i)$. In Corollary~\ref{cor:Lvalue} the
-conductor of the character is prime to $p$ and its infinity type varies. For a prime $p$ inert
+conductor of the character is prime to $p$ and its infinity type varies. A lower bound in this
+situation was given in \cite[Theorem~6.8]{BKY}: for a Hecke character $\varphi$ of an imaginary
+quadratic field $K$ of discriminant $-d_K$, of infinity type $(a,-b)$ with $b>a\ge0$ and conductor
+prime to $p$, and for $p\ge5$ inert in $K$,
+\[
+v_p\biggl(\Bigl(\frac{2\pi}{\sqrt{d_K}}\Bigr)^{a}\,\frac{L(\varphi,0)}{\Omega^{a+b}}\biggr)\;\ge\;
+\frac{-b-a(p^2-p-1)-p^2+p+2}{p^2-1}-v_p(a+1),
+\]
+where $\Omega$ is a suitable complex period. The values of Theorem~\ref{thm:Lvalue} are the case
+$\varphi=\psi^{8n+1}N^{-(4n+1)}$, $(a,b)=(4n,4n+1)$, with $\Omega$ equal to $\varpi$ up to a
+$p$-adic unit; the left-hand side is then
+$v_p\bigl(\pi^{4n}L(\psi^{8n+1},4n+1)/\varpi^{8n+1}\bigr)=2v_p(d(n))-v_p((4n)!)$, and
+Corollary~\ref{cor:Lvalue} bounds it from below by $v_p((4n)!)-2v_p((pm)!)$. For example, for $p=7$
+and $n=1$ the bound of \cite{BKY} is $-209/48$, while the value is $1/24$, of valuation $0$.
+
+For a prime $p$ inert
 in an imaginary quadratic field $K$, Burungale, Kobayashi and Ota \cite[Theorem~5.3]{BKO}
 determined $v_p\bigl(L(\varphi\chi,1)/\Omega\bigr)$, where $\Omega$ is a CM period, $\varphi$ is a
 self-dual Hecke character of $K$ of infinity type $(1,0)$ with
@@ -729,7 +744,7 @@ It remains to justify the continuation to $s=0$ and its compatibility with diffe
 $m$ and $i$ and write $F(n)=\rho^i\phi_s$. Since $\epsilon(n+2)=-\epsilon(n)$, for
 $\operatorname{Re}s>\frac12$
 \[
-\sum_{n}\epsilon(n)F(n)=\frac14\sum_{n}\epsilon(n)\bigl(F(n)-2F(n+2)+F(n+4)\bigr).
+\sum_{n\ \mathrm{odd}}\epsilon(n)F(n)=\frac14\sum_{n\ \mathrm{odd}}\epsilon(n)\bigl(F(n)-2F(n+2)+F(n+4)\bigr).
 \]
 The second difference on the right is $O\bigl(|n+4mz|^{-3-2\operatorname{Re}s}\bigr)$, locally
 uniformly in $z$, and the same estimate holds after any fixed number of derivatives with respect
@@ -962,10 +977,10 @@ sets and mod $\ell$ non-vanishing, preprint, arXiv:2408.13932.
 
 \bibitem{BKO} A.~Burungale, S.~Kobayashi and K.~Ota, The $p$-adic valuation of local resolvents,
 generalized Gauss sums and anticyclotomic Hecke $L$-values of imaginary quadratic fields at inert
-primes, preprint, arXiv:2507.08221.
+primes, \emph{Amer.\ J.\ Math.}, to appear; arXiv:2507.08221.
 
-\bibitem{DLMF} \emph{NIST Digital Library of Mathematical Functions}, Chapter~23,
-\url{https://dlmf.nist.gov/23}.
+\bibitem{DLMF} \emph{NIST Digital Library of Mathematical Functions}, Chapters~20 and~23,
+\url{https://dlmf.nist.gov/}.
 
 \bibitem{GMR} P.~Guerzhoy, M.~H.~Mertens and L.~Rolen, Periodicities for Taylor coefficients of
 half-integral weight modular forms, \emph{Pacific J.\ Math.} \textbf{307} (2020), 137--157.
@@ -1010,8 +1025,8 @@ modular forms, \emph{Int.\ J.\ Number Theory} \textbf{10} (2014), 1501--1518.
 \emph{Automated Deduction -- CADE 28}, Lecture Notes in Comput.\ Sci.\ \textbf{12699}, Springer,
 2021, 625--635.
 
-\bibitem{Nomoto} K.~Nomoto, The rank of a CM elliptic curve and a recurrence formula, preprint,
-arXiv:2103.08947.
+\bibitem{Nomoto} K.~Nomoto, The rank of a CM elliptic curve and a recurrence formula,
+\emph{J.\ Number Theory} \textbf{238} (2022), 60--81.
 
 \bibitem{Romik} D.~Romik, The Taylor coefficients of the Jacobi theta constant $\theta_3$,
 \emph{Ramanujan J.} \textbf{52} (2020), 275--290.
