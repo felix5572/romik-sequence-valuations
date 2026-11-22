@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "The p-adic valuation of Romik's sequence at primes p ≡ 3 (mod 4): paper, numerical checks and Lean formalisation"
+authors:
+  - family-names: Yuan
+    given-names: Fengbo
+    affiliation: "Department of Physics, University of Alabama at Birmingham"
+    email: yuanf@uab.edu
+repository-code: "https://github.com/felix5572/romik-sequence-valuations"
+license: MIT
+keywords:
+  - Jacobi theta function
+  - Romik's sequence
+  - p-adic valuation
+  - supersingular elliptic curves
+  - Hecke L-functions
+  - Lean 4
+abstract: >-
+  Paper, numerical checks and a Lean 4 formalisation concerning the p-adic valuations of
+  Romik's sequence d(n), the Taylor coefficients of the Jacobi theta constant theta_3 at
+  tau = i, at primes p = 3 (mod 4).
