@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*:Zone.Identifier
+
+# compiled documents are not tracked
+*.pdf
+
+# LaTeX build files
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# Lean build directory
+lean/.lake/
+
+# large data that romik/uv.py regenerates
+romik/uv*.pkl

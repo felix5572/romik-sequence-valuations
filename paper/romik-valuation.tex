@@ -1,0 +1,1002 @@
+% DRAFT. Open items are marked with \todo{...}; see also the list at the end of the file.
+\documentclass[11pt]{amsart}
+\usepackage{amssymb,mathtools,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\dpow}[2]{#1^{[#2]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\DeclareMathOperator{\ord}{ord}
+
+\title[Valuations of Romik's sequence]{The $p$-adic valuation of Romik's sequence\\ at primes $p\equiv 3 \pmod 4$}
+\author{[author to be added]}
+\date{Draft of 22 November 2026}
+
+\begin{document}
+
+\begin{abstract}
+Romik's sequence $(d(n))_{n\ge 0}=1,1,-1,51,849,-26199,\dots$ records the Taylor
+coefficients of the Jacobi theta constant $\theta_3$ at the CM point $\tau=i$. For a prime
+$p\equiv 3\pmod 4$ we prove
+$v_p(d(n))\ge v_p\bigl((4n)!\bigr)-v_p\bigl((p\lfloor 4n/(p+1)\rfloor)!\bigr)$,
+and we show that equality holds if and only if $p\nmid d(r)$, where $r$ is the residue of $n$
+modulo $(p+1)/4$. The lower bound implies a conjecture of Krattenthaler and M\"uller:
+$d(n)\equiv 0 \pmod{p^e}$ for all $n\ge \lceil ep^2/4\rceil$. The proof identifies $d(n)$ with
+Taylor coefficients of $\sigma(z)\sqrt{\wp(z)}$ on the lemniscatic curve and uses the estimates of
+Bannai, Kobayashi and Yasuda for Weierstrass functions at supersingular primes. By an elementary argument we also bound the valuations of Romik's auxiliary
+sequences $u(n)$ and $v(n)$, which proves parts (1) and (2) of another conjecture of Krattenthaler
+and M\"uller. Finally we show that $d(n)^2$ is, up to an explicit factor, the central value
+$L(\psi^{8n+1},4n+1)$ for the Hecke character $\psi$ of the curve $y^2=x^3-x$, so that the results
+above give a lower bound for the $p$-adic valuations of the normalised central values at the primes
+inert in $\Q(i)$ and characterise when it is attained.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $\theta_3(x)=\sum_{n\in\Z}e^{-\pi n^2x}$ for $\operatorname{Re}x>0$. Romik \cite{Romik}
+considered the function
+\[
+\sigma_3(z)=\frac{1}{\sqrt{1+z}}\,\theta_3\!\left(\frac{1-z}{1+z}\right)\qquad(|z|<1)
+\]
+and showed that there is a sequence of integers $(d(n))_{n\ge0}$ with
+\begin{equation}\label{eq:romik}
+\sigma_3(z)=\theta_3(1)\sum_{n=0}^{\infty}\frac{d(n)}{(2n)!}\,\Phi^n z^{2n},
+\qquad \Phi=\frac{\Gamma(1/4)^8}{128\,\pi^4}.
+\end{equation}
+He conjectured that $d(n)$ vanishes modulo $p$ for all large $n$ when $p\equiv3\pmod4$. This was
+proved by Scherer \cite{Scherer} with the threshold $n>(p^2-1)/2$. For prime powers,
+Kim and Lee \cite{KimLee} (for $p\ge5$) and Krattenthaler and M\"uller \cite{KM} proved
+$d(n)\equiv0\pmod{p^e}$ for $e\ge2$ and $n\ge\lceil (e-1)p^2/2\rceil$, and
+\cite[Conjecture~45]{KM} predicts that the threshold $\lceil ep^2/4\rceil$ suffices.
+
+Throughout, $p$ is an odd prime and $v_p$ is the $p$-adic valuation with $v_p(p)=1$.
+
+\begin{theorem}\label{thm:main}
+Let $p\equiv3\pmod4$ be a prime and let $n\ge0$. Put $m=\fl{4n/(p+1)}$ and $r=n-m(p+1)/4$, so that
+$0\le r<(p+1)/4$.
+\begin{enumerate}
+\item[(i)] We have
+\[
+v_p\bigl(d(n)\bigr)\;\ge\; v_p\bigl((4n)!\bigr)-v_p\bigl((pm)!\bigr).
+\]
+\item[(ii)] Let $\delta(k)=2^k d(k)/(4k)!$. Then $p\,\delta\bigl(\tfrac{p+1}{4}\bigr)$ is a $p$-adic unit and
+\[
+p^m\,m!\,\delta(n)\;\equiv\;\Bigl(p\,\delta\bigl(\tfrac{p+1}{4}\bigr)\Bigr)^{m} \delta(r)\pmod{p\,\Z_{(p)}} .
+\]
+In particular, equality holds in \textup{(i)} if and only if $p\nmid d(r)$.
+\end{enumerate}
+\end{theorem}
+
+Since $v_p((pm)!)=m+v_p(m!)$, part (i) says that $d(n)/(4n)!$ has at worst the denominator of the
+coefficient of $z^{(p+1)m}$ in $\exp(z^{p+1}/p)$.
+
+\begin{corollary}\label{cor:KM}
+Let $p\equiv3\pmod4$. Then $v_p(d(n))\ge\fl{4n/p^2}$ for all $n\ge0$. In particular
+$d(n)\equiv0\pmod{p^e}$ for all $n\ge\lceil ep^2/4\rceil$ and all $e\ge1$, which is
+\cite[Conjecture~45]{KM}.
+\end{corollary}
+
+\begin{corollary}\label{cor:modp}
+Let $p\equiv3\pmod4$. Then $d(n)\equiv0\pmod p$ for all $n>(p^2-1)/4$, and
+$p\nmid d\bigl((p^2-1)/4\bigr)$.
+\end{corollary}
+
+Theorem~\ref{thm:main} is the specialisation of a statement about Weierstrass functions. For the
+Weierstrass $\sigma$-function of an elliptic curve with supersingular reduction, the lower bound
+$v_p(a_n)\ge-\tau_{n-1}$ of Theorem~\ref{thm:sigma} below is a theorem of Bannai, Kobayashi and
+Yasuda \cite[Theorem~5.6]{BKY}, who prove equality for the orders $n=p^k(p+1)+1$. Our proofs use
+their bounds for the coefficients of $\wp$ and $\zeta$ \cite[Corollaries~5.3, 5.5]{BKY}. For the
+curves $y^2=4x^3-g_2x$ we determine all orders at which equality holds.
+
+\begin{theorem}\label{thm:sigma}
+Let $p\equiv3\pmod4$, let $K$ be a finite unramified extension of $\Q_p$ with ring of integers
+$\cO$, and let $g_2\in\cO^\times$. Let $\sigma(z)=\sum_{n\ge1}a_nz^n$ be the Weierstrass
+$\sigma$-function of $y^2=4x^3-g_2x$. For $n\ge1$ write $n-1=(p+1)m+s$ with $0\le s\le p$. Then
+$p\,a_{p+2}\in\cO^\times$ and
+\[
+p^m\,m!\,a_n\;\equiv\;(p\,a_{p+2})^m\,a_{s+1}\pmod{p\,\cO}.
+\]
+In particular $v_p(a_n)\ge-m-v_p(m!)$, with equality if and only if $a_{s+1}\in\cO^\times$; equality
+holds for every $n\equiv1\pmod{p+1}$.
+\end{theorem}
+
+Romik's recursion for $d(n)$ involves two auxiliary sequences of integers $u(n)$ and $v(n)$. In
+the normalisation of \cite[\S2]{KM} they are given by
+\begin{equation}\label{eq:uv}
+\sum_{n\ge0}\frac{u(n)}{(2n+1)!}\,t^{2n+1}=\frac{t\,F_3(4t^2)}{F_1(4t^2)},\qquad
+\sum_{n\ge0}\frac{v(n)}{2^n(2n)!}\,t^{2n}=F_1(4t^2)^{1/2},
+\end{equation}
+where $F_1(x)={}_2F_1(\tfrac14,\tfrac14;\tfrac12;x)$ and
+$F_3(x)={}_2F_1(\tfrac34,\tfrac34;\tfrac32;x)$. For these sequences an elementary argument,
+independent of the rest of the paper, gives the following.
+
+\begin{theorem}\label{thm:uv}
+Let $p\equiv3\pmod4$ be a prime. For all $n\ge0$,
+\[
+v_p\bigl(u(n)\bigr)\ge v_p\bigl((2n+1)!\bigr)-\fl{\frac{2n+1}{p+1}},\qquad
+v_p\bigl(v(n)\bigr)\ge v_p\bigl((2n)!\bigr)-\fl{\frac{2n}{p+1}} .
+\]
+\end{theorem}
+
+\begin{corollary}\label{cor:KM43}
+Let $p\equiv3\pmod4$. Then
+\begin{enumerate}
+\item[(i)] $u(n)\equiv0\pmod{p^{2e-1}}$ for all $n\ge\lceil (ep^2-1)/2\rceil$ and all $e\ge1$;
+\item[(ii)] $u(n)\equiv0\pmod{p^{2e}}$ for all $n\ge(ep^2+(e-2)p)/2$ and all $e\ge2$;
+\item[(iii)] $u(n)\equiv0\pmod{p^2}$ for all $n\ge(p^2-1)/2$, and $u(n)\equiv0\pmod p$ for all
+$n\ge(p^2-p)/2$.
+\end{enumerate}
+\end{corollary}
+
+Parts (i) and (ii) are parts (1) and (2) of \cite[Conjecture~43]{KM}. Not all of the corollary is
+new: the cases $e\le2$ of (i) are contained in \cite[Theorem~9]{KM}, the first half of (iii) is
+\cite[Proposition~8]{KM} (and is part (2a) of the conjecture), and the second half of (iii), stated
+as an experimental observation in the remark following the conjecture, follows from
+\cite[Lemma~7 and Proposition~8]{KM}. What is new is (i) for $e\ge3$ and (ii) for all $e\ge2$; we
+state the other cases because the proof gives them at no cost.
+
+The structure behind Theorems~\ref{thm:main} and~\ref{thm:sigma} is a factorisation
+(Proposition~\ref{prop:structure}): each of
+the series $f(z)$ in question can be written as
+\[
+f(z)=\bigl(T(z)+r(z)\bigr)\,\exp\!\Bigl(\nu\,\frac{z^{p+1}}{p}\Bigr)\bigl(1+p\,h(z)\bigr),
+\]
+where $T$ is a polynomial of degree at most $p$ with integral coefficients, $\nu$ is a unit, and
+$r/p$ and $h$ lie in the ideal $J$ of Section~\ref{sec:ring}.
+
+\subsection*{Organisation} Section~\ref{sec:ring} introduces the ring $D$ of power series with the
+relevant denominators and proves the factorisation criterion. Section~\ref{sec:bky} recalls the
+results of \cite{BKY} that we use and verifies the criterion for $\sigma(z)/z$ and
+$\sigma(z)\sqrt{\wp(z)}$. Section~\ref{sec:romik} identifies $d(n)$ with Taylor coefficients of
+$\sigma(z)\sqrt{\wp(z)}$. Section~\ref{sec:proofs} proves Theorems~\ref{thm:main} and~\ref{thm:sigma} and their
+corollaries, Section~\ref{sec:uv} proves Theorem~\ref{thm:uv} and Corollary~\ref{cor:KM43}, and
+Section~\ref{sec:Lvalues} expresses $d(n)^2$ as a central value of a Hecke $L$-function
+(Theorem~\ref{thm:Lvalue}), and Section~\ref{sec:numerics} records numerical data and open
+points.
+
+\section{A ring of power series with divided powers}\label{sec:ring}
+
+Let $K$ be a finite unramified extension of $\Q_p$ with ring of integers $\cO$ and valuation
+$v=v_p$, so that $v(K^\times)=\Z$.
+
+\begin{definition}
+For $n\ge0$ put $m(n)=\fl{n/(p+1)}$ and
+\[
+\tau_n \;=\; m(n)+v_p\bigl(m(n)!\bigr)\;=\;v_p\bigl((p\,m(n))!\bigr).
+\]
+Let
+\[
+D=\Bigl\{\sum_{n\ge0}a_nz^n\in K[[z]] \;:\; v(a_n)\ge-\tau_n \text{ for all } n\Bigr\},\qquad
+J=D\cap z^{p+1}K[[z]] .
+\]
+We write $y=z^{p+1}/p$ and $\dpow{y}{k}=y^k/k!$. Finally let
+\[
+\Lambda=\Bigl\{\sum_{n\ge0}a_nz^n\in K[[z]] \;:\; a_n\in\cO \text{ for } n\le p,\quad
+v(a_n)\ge1-\tau_n \text{ for } n\ge p+1\Bigr\},
+\]
+the set of sums of a polynomial of degree at most $p$ over $\cO$ and an element of $pJ$.
+\end{definition}
+
+The numbers $\tau_n$ are those of \cite[(13)]{BKY}. Since $v(p^kk!)=\tau_{(p+1)k}$, an element of
+$D$ is the same thing as a series $\sum_{k\ge0}P_k(z)\,\dpow{y}{k}$ with $P_k\in\cO[z]$ of degree at
+most $p$, and this expression is unique.
+
+\begin{lemma}\label{lem:tau}
+\begin{enumerate}
+\item[(a)] $\tau_{a+b}\ge\tau_a+\tau_b$ for all $a,b\ge0$, and $\tau_{n+p+1}\ge\tau_n+1$.
+\item[(b)] $v_p\bigl(\fl{n/4}!\bigr)\le\tau_n-1$ for all $n\ge p+1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) We have $m(a+b)\ge m(a)+m(b)$, and $v_p((pM)!)\ge v_p((pM_1)!)+v_p((pM_2)!)$ whenever
+$M\ge M_1+M_2$, because $(pM_1+pM_2)!/((pM_1)!(pM_2)!)$ is an integer. The second assertion follows
+from $\tau_{p+1}=1$.
+
+(b) Let $k=\fl{n/4}$ and $m=m(n)\ge1$. If $k<p$ then $v_p(k!)=0\le m-1\le\tau_n-1$. Let $k\ge p$.
+Since $v_p(k!)\le(k-1)/(p-1)$, it suffices to show $k+p-2\le(p-1)m$. We have
+$(p+1)m\ge n-p\ge4k-p$, and
+\begin{multline*}
+(p-1)(4k-p)-(p+1)(k+p-2)=k(3p-5)-(2p^2-2p-2)\\
+\ge p(3p-5)-(2p^2-2p-2)=(p-1)(p-2)\ge0 .
+\end{multline*}
+Hence $(p+1)(p-1)m\ge(p-1)(4k-p)\ge(p+1)(k+p-2)$.
+\end{proof}
+
+\begin{lemma}\label{lem:ring}
+\begin{enumerate}
+\item[(a)] $D$ is a subring of $K[[z]]$ containing $\cO[[z]]$, and $J$ and $pJ$ are ideals of $D$.
+\item[(b)] $z^{p+1}D\subset pD$.
+\item[(c)] If $x\in J$, then $\exp(px)\in1+pJ$.
+\item[(d)] If $Q\in z^4\cO[[z]]$, then $\exp(Q)\in\Lambda$.
+\item[(e)] $\Lambda$ is a subring of $D$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) and (b) follow from Lemma~\ref{lem:tau}(a). For (c), we have
+$\exp(px)-1=\sum_{k\ge1}(p^k/k!)\,x^k$. Here $x^k\in J\cap z^{k(p+1)}K[[z]]$ because $J$ is an
+ideal, so the series converges $z$-adically, and $v(p^k/k!)\ge k-\frac{k-1}{p-1}\ge1$ for $k\ge1$.
+
+(d) The coefficient of $z^n$ in $\exp(Q)$ is $\sum_{k\ge0}[z^n]\,Q^k/k!$. Since
+$Q^k\in z^{4k}\cO[[z]]$, only the terms with $k\le n/4$ contribute, so this coefficient has
+valuation at least $-v_p(\fl{n/4}!)$. For $n\le p$ this is $0$, because $\fl{n/4}<p$; for
+$n\ge p+1$ it is at least $1-\tau_n$ by Lemma~\ref{lem:tau}(b).
+
+(e) Let $a,b\in\Lambda$ and write $a=A+a_1$, $b=B+b_1$ with $A,B\in\cO[z]$ of degree at most $p$
+and $a_1,b_1\in pJ$. Then $ab-AB\in pJ$ because $pJ$ is an ideal of $D$, and $AB\in\cO[z]$ lies in
+$\Lambda$ because $1-\tau_n\le0$ for $n\ge p+1$.
+\end{proof}
+
+\begin{proposition}[Factorisation]\label{prop:structure}
+Let $L=\sum_{n\ge4}\ell_nz^n\in z^4K[[z]]$ and assume
+\begin{enumerate}
+\item[(a)] $\ell_n\in\cO$ for $n\le p$;
+\item[(b)] $\nu:=p\,\ell_{p+1}\in\cO$;
+\item[(c)] $v(\ell_n)\ge1-\tau_n$ for all $n\ge p+2$.
+\end{enumerate}
+Then $f=\exp(L)=\sum_{n\ge0}f_nz^n$ can be written as
+\begin{equation}\label{eq:factor}
+f=V\cdot\exp(\nu y)\cdot(1+ph),
+\end{equation}
+where $V\in\Lambda$, $V(0)=1$ and $h\in J$. In particular
+$f\in D$, that is, $v(f_n)\ge-\tau_n$ for all $n$, and for all $m\ge0$ and $0\le s\le p$
+\begin{equation}\label{eq:leading}
+p^m\,m!\,f_{(p+1)m+s}\;\equiv\;\nu^m f_s\pmod{p\,\cO},\qquad \nu\equiv p\,f_{p+1}\pmod{p\,\cO}.
+\end{equation}
+More generally, if $w\in\Lambda$ and $w(0)=1$, then $fw\in D$ and \eqref{eq:leading} holds with
+$f$ replaced by $fw$.
+\end{proposition}
+
+\begin{proof}
+Write $L=Q+\nu y+L_1$ with $Q=\sum_{n\le p}\ell_nz^n\in z^4\cO[z]$ and
+$L_1=\sum_{n\ge p+2}\ell_nz^n$, which lies in $pJ$ by (c). Then
+$f=\exp(Q)\exp(\nu y)\exp(L_1)$. Lemma~\ref{lem:ring}(d) gives $V:=\exp(Q)\in\Lambda$ and
+Lemma~\ref{lem:ring}(c) gives $\exp(L_1)=1+ph$ with $h\in J$. This is \eqref{eq:factor}.
+
+Let $w\in\Lambda$ with $w(0)=1$; the case $w=1$ is the first assertion. By
+Lemma~\ref{lem:ring}(e), $Vw\in\Lambda$, so $Vw=T+r$ with $T\in1+z\cO[z]$ of degree at most $p$
+and $r\in pJ$. Since $\exp(\nu y)=\sum_k\nu^k\dpow{y}{k}\in D$ and $D$ is a ring, $fw\in D$, and
+\[
+fw-T\exp(\nu y)=r\exp(\nu y)(1+ph)+T\exp(\nu y)\,ph\in pD .
+\]
+Therefore $fw\equiv T(z)\exp(\nu y)=\sum_{k\ge0}\nu^kT(z)\,\dpow{y}{k}\pmod{pD}$. Comparing
+coefficients of $z^{(p+1)m+s}$, and using that $T$ has degree at most $p$ and that an element of
+$pD$ has coefficients of valuation at least $1-\tau_n$, we get
+$p^mm!\,(fw)_{(p+1)m+s}\equiv\nu^mT_s\pmod{p\cO}$, where $T_s$ is the coefficient of $z^s$ in $T$.
+The case $m=0$ gives $(fw)_s\equiv T_s$, and the case $m=1$, $s=0$ gives $p\,(fw)_{p+1}\equiv\nu$.
+This proves \eqref{eq:leading} for $fw$.
+\end{proof}
+
+We isolate the two elementary inequalities used in Section~\ref{sec:bky}.
+
+\begin{lemma}\label{lem:ineq}
+Let $n\ge p+1$, $m=m(n)$ and $q=\fl{n/(p^2-1)}$.
+\begin{enumerate}
+\item[(a)] $m\ge2q$ and $m-q\ge\lceil m/2\rceil\ge1$.
+\item[(b)] If $n\ge4p^k$ for some $k\ge1$, then $\tau_n-q\ge k+1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $n/(p+1)\ge(p-1)q$ and $(p-1)q$ is an integer, so $m\ge(p-1)q\ge2q$; and $m\ge1$.
+
+(b) Since $4p\ge3(p+1)$ we have $m\ge\fl{4p^k/(p+1)}\ge3p^{k-1}$. Hence $m-q\ge\lceil m/2\rceil\ge2$,
+and $v_p(m!)\ge\fl{m/p}\ge3p^{k-2}\ge k-1$ if $k\ge2$, while $v_p(m!)\ge0=k-1$ if $k=1$. So
+$\tau_n-q=(m-q)+v_p(m!)\ge k+1$.
+\end{proof}
+
+\section{Weierstrass functions at supersingular primes}\label{sec:bky}
+
+Let $E$ be the elliptic curve $y^2=4x^3-g_2x-g_3$ with $g_2,g_3\in\cO$ and good reduction, and let
+$\sigma(z)$, $\zeta(z)=\sigma'(z)/\sigma(z)$, $\wp(z)=-\zeta'(z)$ be its Weierstrass functions,
+regarded as formal series in $z$ as in \cite[\S1]{BKY}. This is the setting of \cite{BKY}: $p$
+is an odd prime, $K$ is unramified over $\Q_p$, and $E$ is given by a Weierstrass model
+$y^2=4x^3-g_2x-g_3$ over $\cO$ with good reduction. We use the following results.
+
+\begin{theorem}[Bannai--Kobayashi--Yasuda]\label{thm:bky}
+Assume that $E$ has supersingular reduction.
+\begin{enumerate}
+\item[(a)] \cite[Theorem~5.6]{BKY} If $\sigma(z)=\sum a_nz^n$, then $v(a_n)\ge-\tau_{n-1}$; that
+is, $\sigma(z)/z\in D$.
+\item[(b)] \cite[Corollary~5.3]{BKY} For $n\ge-2$ the coefficient of $z^n$ in $\wp(z)$ has
+valuation at least $-(n+2)/(p^2-1)$.
+\item[(c)] \cite[Corollary~5.5]{BKY} If $\zeta(z)=\sum_{n\ge-1}b_nz^n$, then
+\[
+v(b_n)\ge-1-\frac{n-p}{p^2-1}\quad\text{for all }n,\qquad
+v(b_n)\ge-\frac{n+1}{p^2-1}\quad\text{if }p\nmid n,
+\]
+and equality holds in the first bound for $n=p$, that is, $v(b_p)=-1$ (see also
+\cite[Proposition~4.3]{BKY}).
+\end{enumerate}
+\end{theorem}
+
+Let $R=\{\sum r_nz^n\in K[[z]]:v(r_n)\ge-n/(p^2-1)\}$. This is a ring, and
+$R\subset\Lambda\subset D$: the valuation $v$ is integer valued, $\fl{n/(p^2-1)}=0$ for $n\le p$,
+and $\fl{n/(p^2-1)}\le m(n)-1\le\tau_n-1$ for $n\ge p+1$ by Lemma~\ref{lem:ineq}(a).
+
+\begin{proposition}\label{prop:general}
+Assume that $E$ has supersingular reduction, and let $e\in\cO$ be a root of $4x^3-g_2x-g_3$. Let
+$\sigma_e(z)=\sigma(z)\sqrt{\wp(z)-e}\in1+zK[[z]]$. Then $\sigma_e\in D$.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:bky}(b), $g(z):=z^2(\wp(z)-e)$ satisfies $g-1\in R\cap zK[[z]]$. Since $p$
+is odd, the binomial series $g^{1/2}=\sum_k\binom{1/2}{k}(g-1)^k$ has coefficients in $\Z_p$ and
+converges $z$-adically, so $g^{1/2}\in R\subset\Lambda$. Now $\sigma_e=(\sigma(z)/z)\cdot g^{1/2}$ and $\sigma(z)/z\in D$ by
+Theorem~\ref{thm:bky}(a).
+\end{proof}
+
+From now on we assume $p\equiv3\pmod4$, $g_3=0$ and $g_2\in\cO^\times$. Then $E$ has good
+supersingular reduction: the discriminant is $g_2^3$ up to a power of $2$, and the Hasse invariant
+is the coefficient of $x^{p-1}$ in $x^{(p-1)/2}(4x^2-g_2)^{(p-1)/2}$, which vanishes because
+$(p-1)/2$ is odd. Moreover $\sigma(z)\in zK[[z^4]]$ and $z^2\wp(z)\in K[[z^4]]$ by
+\cite[(3)]{BKY}, and $e=0$ is a root of $4x^3-g_2x$.
+
+\begin{remark}\label{rem:three}
+The hypotheses of \cite{BKY} allow $p=3$. In that case the only input beyond the bounds of
+Theorem~\ref{thm:bky}(b),(c) is $v(b_3)=-1$, which can be seen directly: $b_3=-g_2/60$.
+\end{remark}
+
+\begin{proposition}\label{prop:verify}
+Let $p\equiv3\pmod4$ and $g_3=0$, $g_2\in\cO^\times$.
+\begin{enumerate}
+\item[(1)] The series $L_\sigma=\log\bigl(\sigma(z)/z\bigr)$ lies in $z^4K[[z^4]]$ and satisfies
+\textup{(a)--(c)} of Proposition~\ref{prop:structure}, with $p\,\ell_{p+1}\in\cO^\times$.
+\item[(2)] The series $w=\bigl(z^2\wp(z)\bigr)^{1/2}\in1+z^4K[[z^4]]$ lies in $\Lambda$.
+\end{enumerate}
+Consequently $\sigma(z)/z$ and $\sigma(z)\sqrt{\wp(z)}=(\sigma(z)/z)\cdot w$ both lie in $D$ and
+satisfy \eqref{eq:leading}, with the same unit $\nu=p\,\ell_{p+1}$.
+\end{proposition}
+
+\begin{proof}
+(2) was shown in the proof of Proposition~\ref{prop:general} (with $e=0$), and the last assertion
+follows from (1), (2) and Proposition~\ref{prop:structure}. It remains to prove (1).
+
+Since $\frac{d}{dz}L_\sigma=\zeta(z)-1/z$, the coefficient of $z^n$
+in $L_\sigma$ is $\ell_n=b_{n-1}/n$ for $n\ge2$. It vanishes unless $4\mid n$. Let $4\mid n$.
+
+If $n<p+1$, then $p\nmid n(n-1)$ and Theorem~\ref{thm:bky}(c) gives $v(b_{n-1})\ge-n/(p^2-1)>-1$,
+so $\ell_n\in\cO$. If $n=p+1$, then $v(\ell_{p+1})=v(b_p)=-1$.
+
+Let $n\ge p+2$, and let $m,q$ be as in Lemma~\ref{lem:ineq}. Suppose first $p\nmid n-1$. Then
+$v(b_{n-1})\ge-q$ by Theorem~\ref{thm:bky}(c), so $v(\ell_n)\ge-q-k$ with $k=v_p(n)$. If $k=0$ this
+is at least $1-m\ge1-\tau_n$ by Lemma~\ref{lem:ineq}(a). If $k\ge1$, then $n=p^ka$ with $4\mid a$,
+so $n\ge4p^k$ and Lemma~\ref{lem:ineq}(b) gives $-q-k\ge1-\tau_n$. Suppose now $n-1=pc$. Then
+$p\nmid n$, and $n\equiv0$, $p\equiv3\pmod4$ force $c\equiv1\pmod4$; since $n\ne p+1$ we get
+$c\ge5$, $n\ge5p+1$ and $m\ge4$. Theorem~\ref{thm:bky}(c) gives
+$v(\ell_n)=v(b_{n-1})\ge-1-\fl{(n-1-p)/(p^2-1)}\ge-1-q$, and $m-q\ge\lceil m/2\rceil\ge2$ by
+Lemma~\ref{lem:ineq}(a), so $v(\ell_n)\ge1-m\ge1-\tau_n$.
+\end{proof}
+
+\section{Romik's sequence and the lemniscatic curve}\label{sec:romik}
+
+Let $\mathcal L=\varpi\,\Z[i]\subset\C$ with $\varpi=\Gamma(1/4)^2/(2\sqrt{2\pi})$; this is the period
+lattice of $dx/y$ on $y^2=4x^3-4x$, with invariants $g_2=4$, $g_3=0$
+\cite[(23.5.4)]{DLMF}. Let $\sigma$ and $\wp$ be its Weierstrass functions.
+
+\begin{proposition}\label{prop:identify}
+Let $\sigma(z)\sqrt{\wp(z)}=\sum_{j\ge0}f_jz^j$ be the Taylor expansion at $z=0$, normalised by
+$f_0=1$. Then $f_j=0$ unless $4\mid j$, and for all $n\ge0$
+\[
+d(n)=2^{-n}\,(4n)!\,f_{4n}.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $\vartheta(u)=\sum_{n\in\Z}e^{-\pi n^2+2\pi inu}$ and $\Theta(u)=e^{\pi u^2/2}\vartheta(u)$, an
+entire function with $\Theta(0)=\theta_3(1)$.
+
+\emph{Step 1.} For $a,b\in\C$ we have the identity of power series in $t$
+\begin{equation}\label{eq:gauss}
+\sum_{k\ge0}\frac{t^k}{k!}\,\frac{d^{2k}}{du^{2k}}e^{au^2+bu}\Big|_{u=0}
+=(1-4at)^{-1/2}\exp\!\Bigl(\frac{b^2t}{1-4at}\Bigr).
+\end{equation}
+Indeed, the coefficient of $a^jb^{2m}t^{m+j}$ is $\frac{(2m+2j)!}{(m+j)!\,j!\,(2m)!}$ on the left
+and $\frac{4^j}{m!}\binom{m+j-1/2}{j}$ on the right, and both equal
+$\frac{2^j}{m!\,j!}\prod_{i=1}^j(2m+2i-1)$.
+
+Apply \eqref{eq:gauss} with $a=\pi/2$, $b=2\pi in$ and $t=-z/(2\pi)$, and multiply by
+$e^{-\pi n^2}$. The right-hand side becomes
+$(1+z)^{-1/2}\exp\bigl(-\pi n^2\frac{1-z}{1+z}\bigr)$. Summing over $n\in\Z$, which is legitimate
+for the Taylor coefficients at $z=0$ because the series converges uniformly on compact subsets of
+$|z|<1$, and differentiating the series for $\Theta$ termwise, we obtain
+\[
+\sigma_3(z)=\sum_{k\ge0}\frac{(-1)^k\,\Theta^{(2k)}(0)}{(2\pi)^k\,k!}\,z^k .
+\]
+Comparing with \eqref{eq:romik} gives $\Theta^{(2k)}(0)=0$ for odd $k$ and
+\begin{equation}\label{eq:d-theta}
+d(n)=\frac{\Theta^{(4n)}(0)}{\Theta(0)\,(4\pi^2\Phi)^n}.
+\end{equation}
+
+\emph{Step 2.} Let $2\omega_1=\varpi$ and $2\omega_3=i\varpi$, so $\tau=\omega_3/\omega_1=i$ and
+$q=e^{-\pi}$. By \cite[(23.6.9), (23.6.6)]{DLMF},
+\begin{align*}
+\sigma(z)&=2\omega_1\exp\!\Bigl(\frac{\eta_1z^2}{2\omega_1}\Bigr)
+\frac{\theta_1(\pi z/(2\omega_1),q)}{\pi\,\theta_1'(0,q)},\\
+\wp(z)-e_2&=\Bigl(\frac{\pi\,\theta_2(0,q)\,\theta_4(0,q)\,\theta_3(\pi z/(2\omega_1),q)}
+{2\omega_1\,\theta_1(\pi z/(2\omega_1),q)}\Bigr)^{2},
+\end{align*}
+where $\theta_3(w,q)=1+2\sum_{n\ge1}q^{n^2}\cos(2nw)$ \cite[(20.2.3)]{DLMF},
+$\eta_1=\zeta(\omega_1)$ and $e_2=\wp(\omega_2)$ with $\omega_1+\omega_2+\omega_3=0$
+\cite[(23.2.1), (23.2.12), (23.3.9)]{DLMF}. Multiplying, $\sigma(z)^2(\wp(z)-e_2)$ equals
+$\exp(\eta_1z^2/\omega_1)\,\theta_3(\pi z/(2\omega_1),q)^2$ times a constant, and the value $1$
+at $z=0$ fixes the constant. Hence
+\[
+\sigma(z)\sqrt{\wp(z)-e_2}=\exp\!\Bigl(\frac{\eta_1z^2}{2\omega_1}\Bigr)
+\frac{\theta_3(\pi z/(2\omega_1),q)}{\theta_3(0,q)} .
+\]
+In the lemniscatic case $\omega_3=i\omega_1$ we have $e_2=0$ and $\eta_1=\pi/(4\omega_1)$
+\cite[(23.5.2), (23.5.3)]{DLMF}. (Indeed $i\mathcal L=\mathcal L$ gives $\wp(iz)=-\wp(z)$ and
+$\zeta(iz)=-i\zeta(z)$; since $i\omega_2\equiv\omega_2\pmod{\mathcal L}$ this gives $e_2=-e_2$, and
+$\eta_3=-i\eta_1$, and the Legendre relation
+$\eta_1\omega_3-\eta_3\omega_1=\pi i/2$ \cite[(23.2.14)]{DLMF} gives the value of $\eta_1$.) With
+$u=z/(2\omega_1)$ this shows
+\[
+\sigma(z)\sqrt{\wp(z)}=\frac{\Theta(u)}{\Theta(0)},\qquad u=\frac{z}{\varpi}.
+\]
+In particular $f_j=0$ unless $4\mid j$, and
+$\Theta^{(4n)}(0)/\Theta(0)=\varpi^{4n}(4n)!\,f_{4n}$.
+
+\emph{Step 3.} We have $\varpi^4=\Gamma(1/4)^8/(64\pi^2)$ and
+$4\pi^2\Phi=\Gamma(1/4)^8/(32\pi^2)$, so $\varpi^4/(4\pi^2\Phi)=1/2$. Inserting this into
+\eqref{eq:d-theta} gives the claim.
+\end{proof}
+
+\section{Proofs of the main results}\label{sec:proofs}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sigma}]
+By Proposition~\ref{prop:verify}, the series $f=\sigma(z)/z$, whose coefficients are
+$f_n=a_{n+1}$, lies in $D$ and satisfies \eqref{eq:leading} with $\nu\in\cO^\times$. For $s=0$ we
+have $a_1=1$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Take $K=\Q_p$ and $g_2=4$. By Proposition~\ref{prop:verify}, the series
+$f=\sigma(z)\sqrt{\wp(z)}=\sum f_jz^j$ lies in $D$ and satisfies \eqref{eq:leading} with
+$\nu\equiv pf_{p+1}$ a unit. By
+Proposition~\ref{prop:identify}, $f_{4k}=\delta(k)$. Since $4n=(p+1)m+4r$ with $0\le4r\le p-3$, the
+bound $v_p(f_{4n})\ge-\tau_{4n}$ is (i), and \eqref{eq:leading} with $s=4r$ is the congruence in
+(ii). Finally $\delta(r)=2^rd(r)/(4r)!$ and $(4r)!$ is prime to $p$, so $\delta(r)$ is a unit exactly when
+$p\nmid d(r)$.
+\end{proof}
+
+\begin{lemma}\label{lem:floor}
+For all integers $A\ge0$ we have $v_p(A!)-\tau_A\ge\fl{A/p^2}$.
+\end{lemma}
+
+\begin{proof}
+Let $m=m(A)$. By Legendre's formula,
+$v_p(A!)-v_p((pm)!)=\sum_{i\ge1}\bigl(\fl{A/p^i}-\fl{m/p^{i-1}}\bigr)$. Since $A\ge(p+1)m$, we have
+$\fl{A/p}\ge m+\fl{m/p}$ and $\fl{A/p^i}\ge\fl{m/p^{i-1}}$ for $i\ge3$. Hence the sum is at least
+$\fl{m/p}+\bigl(\fl{A/p^2}-\fl{m/p}\bigr)=\fl{A/p^2}$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:KM}]
+Combine Theorem~\ref{thm:main}(i) with Lemma~\ref{lem:floor} for $A=4n$. If $n\ge ep^2/4$ then
+$\fl{4n/p^2}\ge e$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:modp}]
+If $n>(p^2-1)/4$ then $4n\ge p^2$ and Corollary~\ref{cor:KM} gives $p\mid d(n)$. For
+$n=(p^2-1)/4$ we have $4n=(p+1)(p-1)$, so $m=p-1$, $r=0$ and
+$v_p((4n)!)-v_p((pm)!)=(p-1)-(p-1)=0$. Since $d(0)=1$, Theorem~\ref{thm:main}(ii) gives
+$v_p(d(n))=0$.
+\end{proof}
+
+\section{The sequences $u(n)$ and $v(n)$}\label{sec:uv}
+
+Throughout this section $p\equiv3\pmod4$, except in Remark~\ref{rem:split}. Put
+$\Pi_1(N)=\prod_{j=1}^N(4j-1)^2$ and $\Pi_3(N)=\prod_{j=1}^N(4j-3)^2$. Expanding the Pochhammer
+symbols gives (cf.\ \cite[\S2]{KM})
+\begin{equation}\label{eq:hyp}
+F_1(4t^2)=\sum_{j\ge0}\frac{\Pi_3(j)}{(2j)!}\,t^{2j},\qquad
+t\,F_3(4t^2)=\sum_{j\ge0}\frac{\Pi_1(j)}{(2j+1)!}\,t^{2j+1}.
+\end{equation}
+Let
+\[
+S=\Bigl\{\sum_{k\ge0}a_kt^k\in\Q_p[[t]]\;:\;v_p(a_k)\ge-\fl{\frac{k}{p+1}}\text{ for all }k\Bigr\}.
+\]
+Since $\fl{i/(p+1)}+\fl{j/(p+1)}\le\fl{(i+j)/(p+1)}$, this is a subring of $\Q_p[[t]]$ containing
+$\Z_p[[t]]$.
+
+\begin{lemma}\label{lem:products}
+For all $j\ge0$,
+\[
+v_p\bigl(\Pi_3(j)\bigr)\ge v_p\bigl((2j)!\bigr)-\fl{\frac{2j}{p+1}},\qquad
+v_p\bigl(\Pi_1(j)\bigr)\ge v_p\bigl((2j+1)!\bigr)-\fl{\frac{2j+1}{p+1}} .
+\]
+That is, both series in \eqref{eq:hyp} lie in $S$.
+\end{lemma}
+
+\begin{proof}
+Fix $i\ge1$, put $P=p^i$ and write $j=aP+b$ with $0\le b<P$. For $r\in\{1,3\}$ let
+$c_r\in\{1,\dots,P\}$ be the solution of $4c_r\equiv r\pmod P$, so that
+$\#\{1\le l\le j:P\mid 4l-r\}=a+[b\ge c_r]$, where $[\,\cdot\,]$ is $1$ if the condition holds and
+$0$ otherwise. If $i$ is odd then $P\equiv3\pmod4$, $c_3=3(P+1)/4$ and $c_1=(P+1)/4$; if $i$ is
+even then $P\equiv1\pmod4$, $c_3=(P+3)/4$ and $c_1=(3P+1)/4$. Moreover
+$\fl{2j/P}=2a+[b\ge(P+1)/2]$ and $\fl{(2j+1)/P}=2a+[b\ge(P-1)/2]$. Hence
+\begin{align*}
+2\,\#\{l\le j:P\mid4l-3\}-\fl{2j/P}&=2[b\ge c_3]-[b\ge(P+1)/2],\\
+2\,\#\{l\le j:P\mid4l-1\}-\fl{(2j+1)/P}&=2[b\ge c_1]-[b\ge(P-1)/2].
+\end{align*}
+The first expression is at least $-1$, and it is non-negative unless $i$ is odd and
+$b\ge(P+1)/2$, which forces $p^i<2j$. The second is at least $-1$, and it is non-negative unless
+$i$ is even and $b\ge(P-1)/2$, which forces $p^i\le2j+1$. Summing over $i$ and using Legendre's
+formula together with $v_p(\Pi_r(j))=2\sum_{i\ge1}\#\{l\le j:p^i\mid4l-r\}$,
+\begin{align*}
+v_p(\Pi_3(j))-v_p((2j)!)&\ge-\#\{i\text{ odd}:p^i<2j\},\\
+v_p(\Pi_1(j))-v_p((2j+1)!)&\ge-\#\{i\ge2\text{ even}:p^i\le2j+1\}.
+\end{align*}
+If the first set has $s\ge1$ elements, then $2j\ge p^{2s-1}+1$ and
+$\fl{2j/(p+1)}\ge(p^{2s-1}+1)/(p+1)=1+\sum_{h=1}^{s-1}p^{2h-1}(p-1)\ge s$. If the second set has
+$s\ge1$ elements, then $2j+1\ge p^{2s}$ and
+$\fl{(2j+1)/(p+1)}\ge(p^{2s}-1)/(p+1)=(p-1)\sum_{h=0}^{s-1}p^{2h}\ge s$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:uv}]
+By Lemma~\ref{lem:products}, $F_1(4t^2)\in S$ and $tF_3(4t^2)\in S$. The ring $S$ is defined by
+conditions on the individual coefficients, so it is closed under $t$-adically convergent sums.
+Since $F_1(4t^2)\in1+t^2\Q_p[[t]]$, the geometric series gives $F_1(4t^2)^{-1}\in S$, and, $p$
+being odd, the binomial series gives $F_1(4t^2)^{1/2}\in S$ for the square root with constant
+term $1$. Hence both series in \eqref{eq:uv} lie in $S$,
+which is the assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:B}
+For $k\ge0$ let $B(k)=v_p(k!)-\fl{k/(p+1)}$, and write $k=(p+1)a+b$ with $0\le b\le p$. Then
+\[
+B(k)=\fl{\frac{a+b}{p}}+\sum_{i\ge2}\fl{\frac{k}{p^i}} .
+\]
+Consequently:
+\begin{enumerate}
+\item[(a)] $B(k)\ge2e-1$ for all $k\ge ep^2$, $e\ge1$;
+\item[(b)] $B(k)\ge2e$ for all odd $k\ge ep^2+(e-2)p+1$, $e\ge2$;
+\item[(c)] $B(k)\ge2$ for all $k\ge p^2$, and $B(k)\ge1$ for all odd $k\ge p^2-p+1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The formula follows from Legendre's formula and $\fl{k/p}=\fl{(pa+a+b)/p}=a+\fl{(a+b)/p}$. Note
+that $a+b\ge k/(p+1)$ and $k=pa+(a+b)$.
+
+(a) Let $k\ge ep^2$. Then $a+b\ge ep^2/(p+1)\ge e(p-1)$, so
+$\fl{(a+b)/p}\ge\fl{e(p-1)/p}=e-\lceil e/p\rceil$, and
+$\sum_{i\ge2}\fl{k/p^i}\ge e+\fl{e/p}$. Hence $B(k)\ge2e+\fl{e/p}-\lceil e/p\rceil\ge2e-1$.
+
+(b) Let $k\ge ep^2+(e-2)p+1=(p+1)(ep-2)+3$ be odd. Then $a+b>ep-2$, so $a+b\ge ep-1$. If
+$a+b=ep-1$, then $pa=k-(ep-1)\ge p(ep-2)+2$, so $a\ge ep-1$, hence $b=0$ and $k=(p+1)(ep-1)$ is
+even, a contradiction. Therefore $a+b\ge ep$ and $\fl{(a+b)/p}\ge e$. Since $k\ge ep^2$, the sum
+over $i\ge2$ is at least $e$.
+
+(c) Let $k\ge p^2$. Then $\fl{k/p^2}\ge1$, and $a+b\ge p^2/(p+1)>p-1$ gives $\fl{(a+b)/p}\ge1$. Let
+$k\ge p^2-p+1=(p+1)(p-2)+3$ be odd. Then $a+b\ge p-1$, and $a+b=p-1$ would give
+$pa=k-(p-1)\ge p(p-2)+2$, so $a\ge p-1$, $b=0$ and $k=p^2-1$ even. Hence $a+b\ge p$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:KM43}]
+By Theorem~\ref{thm:uv}, $v_p(u(n))\ge B(2n+1)$. If $n\ge\lceil(ep^2-1)/2\rceil$ then
+$2n+1\ge ep^2$; if $n\ge(ep^2+(e-2)p)/2$ then $2n+1\ge ep^2+(e-2)p+1$; if $n\ge(p^2-1)/2$ then
+$2n+1\ge p^2$; if $n\ge(p^2-p)/2$ then $2n+1\ge p^2-p+1$. Apply Lemma~\ref{lem:B}.
+\end{proof}
+
+\begin{remark}\label{rem:v}
+For $v(n)$, Theorem~\ref{thm:uv} gives $v(n)\equiv0\pmod{p^e}$ whenever $B(2n)\ge e$. By
+Lemma~\ref{lem:B}(a),(c) this holds for all $n\ge\lceil(e-1)p^2/2\rceil$, $e\ge2$, which is
+\cite[Theorem~17]{KM}; in our computations the thresholds obtained from $B$ are smaller for
+$e\ge4$. They give \cite[Conjecture~44]{KM} for some pairs $(p,e)$ but not for others: for $p=7$
+and $e=1$ the bound gives $n\ge25$, while the conjecture predicts $n\ge18$. Equality in the bound
+is less frequent for $v(n)$ than for $u(n)$. In our data ($n\le1200$, $p\in\{3,7,11,19,23\}$) it
+occurs for $v(n)$ only when the binomial coefficient $\binom{1/2}{m}$, $m=\fl{2n/(p+1)}$, of the
+expansion of $F_1(4t^2)^{1/2}$ is a $p$-adic unit, whereas for $u(n)$, where only a geometric series
+is involved, it occurs for more than $80\%$ of all $n$.
+\end{remark}
+
+\begin{remark}\label{rem:sporadic}
+The bound for $u(n)$ is attained at $n=(3p^2+p-2)/2$ for $p\in\{7,11,19,23\}$, where
+$v_p(u(n))=5$. Hence the second of the two sporadic improvements suggested in the remark following
+\cite[Conjecture~43]{KM}, namely $u(n)\equiv0\pmod{p^6}$ for $n\ge(3p^2-1)/2$, does not hold for
+these primes. Similarly $v_3(v(10))=3$, so the threshold $\lceil ep^2/4\rceil$ of
+\cite[Conjecture~44(2)]{KM} fails for $(p,e)=(3,4)$.
+\end{remark}
+
+\begin{remark}\label{rem:split}
+For $p\equiv1\pmod4$ the proof of Lemma~\ref{lem:products} shows that $F_1(4t^2)\in\Z_p[[t]]$
+(now every $P=p^i$ is $\equiv1\pmod4$), hence $v_p(v(n))\ge v_p((2n)!)$ for all $n$; compare
+\cite[Theorem~19]{KM}.
+\end{remark}
+
+\section{Central values of Hecke $L$-functions}\label{sec:Lvalues}
+
+Let $\psi$ be the Hecke character of $\Q(i)$ attached to the elliptic curve $y^2=x^3-x$ of
+conductor $32$. Every ideal of $\Z[i]$ prime to $2$ has a unique generator
+$\alpha\equiv1\pmod{2+2i}$, and $\psi((\alpha))=\alpha$ for such $\alpha$
+\cite[Chapter~18, \S\S4 and~6]{IR}. Explicitly, $\alpha=a+bi\equiv1\pmod{2+2i}$ means that $a$
+is odd, $b$ is even and $a+b\equiv1\pmod4$. For odd $j\ge1$ the function
+\[
+L(\psi^j,s)=\sum_{\alpha\equiv1\ (2+2i)}\frac{\alpha^j}{N(\alpha)^s}\qquad(\operatorname{Re}s>\tfrac j2+1)
+\]
+continues to an entire function of $s$, with centre $s=(j+1)/2$. Let $\varpi$ be as in
+Section~\ref{sec:romik}.
+
+\begin{theorem}\label{thm:Lvalue}
+For all $n\ge0$,
+\[
+L\bigl(\psi^{8n+1},\,4n+1\bigr)\;=\;\frac{\varpi^{8n+1}}{\pi^{4n}\,(4n)!}\;4^{\,n-1}\,d(n)^2
+\qquad\text{and}\qquad L\bigl(\psi^{8n+5},\,4n+3\bigr)=0 .
+\]
+\end{theorem}
+
+For $n=0$ this is the classical value $L(\psi,1)=\varpi/4$.
+
+\begin{corollary}\label{cor:Lvalue}
+Put $L^{\mathrm{alg}}(n)=\pi^{4n}(4n)!\,L(\psi^{8n+1},4n+1)/\varpi^{8n+1}\in\Q$. Then
+$v_p(L^{\mathrm{alg}}(n))=2\,v_p(d(n))$ for every odd prime $p$. If $p\equiv3\pmod4$, then with
+$m$ and $r$ as in Theorem~\ref{thm:main},
+\[
+v_p\bigl(L^{\mathrm{alg}}(n)\bigr)\;\ge\;2\Bigl(v_p\bigl((4n)!\bigr)-v_p\bigl((pm)!\bigr)\Bigr),
+\]
+with equality if and only if $p\nmid d(r)$.
+\end{corollary}
+
+The primes $p\equiv3\pmod4$ are those inert in $\Q(i)$. In Corollary~\ref{cor:Lvalue} the
+conductor of the character is prime to $p$ and its infinity type varies. For a prime $p$ inert
+in an imaginary quadratic field $K$, Burungale, Kobayashi and Ota \cite[Theorem~5.3]{BKO}
+determined $v_p\bigl(L(\varphi\chi,1)/\Omega\bigr)$, where $\Omega$ is a CM period, $\varphi$ is a
+self-dual Hecke character of $K$ of infinity type $(1,0)$ with
+$p\nmid6h_K\operatorname{cond}\varphi$, and $\chi$ is an anticyclotomic character of order $p^j$
+with $j$ sufficiently large and $(-1)^{j-1}$ equal to the root number of $\varphi$; see also
+\cite{BHKO}, where the case of general infinity type is mentioned as a natural problem.
+
+Theorem~\ref{thm:Lvalue} is of the type established by Rodriguez Villegas and Zagier \cite{VZ}
+for a Hecke character of $\Q(\sqrt{-7})$, and its proof follows the proof of
+\cite[Theorem~2.10]{Nomoto}, where Nomoto treats the curve $y^2=x^3+x$ and the theta function
+$\theta_2$. The connection between Taylor coefficients at CM points and $L$-values is mentioned
+as background in \cite{Romik,GMR,KM}, but we have not found Theorem~\ref{thm:Lvalue} stated there.
+
+\subsection*{Notation} For $z=x+iy$ in the upper half plane let $D=\frac1{2\pi i}\frac{d}{dz}$,
+$\partial_k=D-\frac{k}{4\pi y}$ and
+$\partial_k^{(h)}=\partial_{k+2h-2}\circ\dots\circ\partial_{k+2}\circ\partial_k$. For
+$\gamma\in\mathrm{GL}_2^+(\mathbb R)$ one has
+$\partial_k(f|_k\gamma)=(\partial_kf)|_{k+2}\gamma$. Let
+\[
+\vartheta_K(z)=\sum_{\lambda\in\Z[i]}e^{2\pi iN(\lambda)z}=\theta_3(-2iz)^2 ,
+\]
+let $L_p$ be the Laguerre polynomial $L_p(t)=\sum_{j=0}^p\binom pj\frac{(-t)^j}{j!}$, and let
+$H_p$ be the Hermite polynomial, $e^{2xt-t^2}=\sum_pH_p(x)t^p/p!$. Throughout the proof $p=2h$ is
+an even integer $\ge0$, and
+\[
+\Lambda_s(\lambda)=\frac{\bar\lambda^{\,2p+1}}{|\lambda|^{2p+2+2s}}\qquad(\lambda\in\Z[i],\ \lambda\ne0).
+\]
+
+\begin{proof}[Proof of Theorem~\ref{thm:Lvalue}]
+\emph{Step 1: the $L$-value as a value of Eisenstein series.} Let $\epsilon$ be the non-trivial
+Dirichlet character modulo $4$ and, for $\operatorname{Re}s>\frac12$,
+\[
+E_p(z,s)=\frac12\sum_{(n,m)\ne(0,0)}\epsilon(n)\,\frac{(n+4m\bar z)^{2p+1}}{|n+4mz|^{2p+2+2s}} .
+\]
+By Hecke, $E_p(z,s)$ continues analytically to $s=0$ (see Step~2); put $E_p(z)=E_p(z,0)$. We have
+$E_p(i,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and $b\equiv0\pmod4$, and
+$E_p(i/2,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and even $b$. Let $P_0(s)$ and
+$P_2(s)$ be the sums of $\Lambda_s(\alpha)$ over the $\alpha=a+bi\equiv1\pmod{2+2i}$ with
+$b\equiv0$, respectively $b\equiv2\pmod4$. If $a$ is odd and $b\equiv0\pmod4$, then exactly one of
+$\pm(a+bi)$ is $\equiv1\pmod{2+2i}$, namely the one with real part $\equiv1\pmod4$; if
+$b\equiv2\pmod4$ it is the one with real part $\equiv3\pmod4$. Since
+$\Lambda_s(-\lambda)=-\Lambda_s(\lambda)$, this gives
+\[
+E_p(i,s)=P_0(s),\qquad E_p(i/2,s)=P_0(s)-P_2(s).
+\]
+The set of $\alpha\equiv1\pmod{2+2i}$ is stable under complex conjugation, so
+$L(\psi^{2p+1},p+1+s)=P_0(s)+P_2(s)$, and at $s=0$
+\begin{equation}\label{eq:L-eis}
+L(\psi^{2p+1},p+1)=2E_p(i)-E_p(i/2).
+\end{equation}
+
+\emph{Step 2: Eisenstein series and $\vartheta_K$.} For $p=0$, Hecke's identity
+$E_0(z)=\frac\pi4\vartheta_K(z)$ holds (see \cite[proof of Proposition~2.7]{Nomoto}; it is
+equivalent to $r_2(N)=4\sum_{d\mid N}\epsilon(d)$). Applying $\partial_1^{(p)}$, by
+\cite[(16)]{VZ},
+\begin{equation}\label{eq:eis-theta}
+\frac\pi4\,\partial_1^{(p)}\vartheta_K(z)=\frac{p!}{(4\pi y)^p}\,E_p(z).
+\end{equation}
+Here the differentiation is carried out for $\operatorname{Re}s>\frac12$ and then continued to
+$s=0$: writing $\rho=(n+4m\bar z)/(n+4mz)$ and $\phi_s=(n+4mz)^{-1}|n+4mz|^{-2s}$, one finds
+$\partial_{1+2j}\bigl(y^{-j}\rho^i\phi_s\bigr)=(4\pi)^{-1}y^{-j-1}\bigl((s+i-j)\rho^i\phi_s
+-(1+i+s)\rho^{i+1}\phi_s\bigr)$, so that
+$\partial_1^{(p)}\phi_s=(4\pi y)^{-p}\sum_{i\le p}c_i(s)\rho^i\phi_s$ with polynomials $c_i$
+satisfying $c_i(0)=0$ for $i<p$ and $c_p(0)=p!$ (recall that $p$ is even).
+
+It remains to justify the continuation to $s=0$ and its compatibility with differentiation. Fix
+$m$ and $i$ and write $F(n)=\rho^i\phi_s$. Since $\epsilon(n+2)=-\epsilon(n)$, for
+$\operatorname{Re}s>\frac12$
+\[
+\sum_{n}\epsilon(n)F(n)=\frac14\sum_{n}\epsilon(n)\bigl(F(n)-2F(n+2)+F(n+4)\bigr).
+\]
+The second difference on the right is $O\bigl(|n+4mz|^{-3-2\operatorname{Re}s}\bigr)$, locally
+uniformly in $z$, and the same estimate holds after any fixed number of derivatives with respect
+to $x$ and $y$. Hence the double series over $(n,m)$ obtained in this way, and its derivatives,
+converge absolutely and locally uniformly for $\operatorname{Re}s>-\frac12$. This continues
+$\sum\epsilon(n)\rho^i\phi_s$ to a neighbourhood of $s=0$ and shows that the continuation commutes
+with differentiation in $z$; compare the remark following \cite[(22)]{VZ}.
+
+\emph{Step 3: the Fricke involution.} From $\theta_3(1/x)=\sqrt x\,\theta_3(x)$ we get
+$\vartheta_K(-1/(4z))=-2iz\,\vartheta_K(z)$, that is, $\vartheta_K|_1\gamma=-i\,\vartheta_K$ for
+$\gamma=\bigl(\begin{smallmatrix}0&-1\\4&0\end{smallmatrix}\bigr)$. Hence
+\[
+(2z)^{-2p-1}\,\bigl(\partial_1^{(p)}\vartheta_K\bigr)(-1/(4z))=-i\,\partial_1^{(p)}\vartheta_K(z),
+\]
+and at $z=i$, since $p$ is even,
+\begin{equation}\label{eq:fricke}
+\partial_1^{(p)}\vartheta_K(i/4)=2^{2p+1}\,\partial_1^{(p)}\vartheta_K(i).
+\end{equation}
+By \eqref{eq:L-eis}, \eqref{eq:eis-theta} and \eqref{eq:fricke},
+\begin{equation}\label{eq:L-A}
+L(\psi^{2p+1},p+1)=\frac{\pi^{p+1}}{8\,p!}\,A_p,
+\end{equation}
+where
+$A_p:=\partial_1^{(p)}\vartheta_K(i/4)-2^{p+1}\partial_1^{(p)}\vartheta_K(i/2)
++2^{2p+1}\partial_1^{(p)}\vartheta_K(i)$.
+
+\emph{Step 4: Laguerre sums and the factorisation formula.} By \cite[(9)]{VZ}, for even $p$,
+\[
+\partial_1^{(p)}\vartheta_K(z)=\frac{p!}{(4\pi y)^p}\sum_{\lambda\in\Z[i]}L_p\bigl(4\pi N(\lambda)y\bigr)
+e^{2\pi iN(\lambda)z}.
+\]
+For $\lambda=n+mi$ the number $nm$ is odd exactly when $\lambda\in(1+i)\Z[i]\setminus2\Z[i]$.
+Evaluating the last formula at $z=i/4$, $i/2$ and $i$ therefore gives
+\[
+A_p=\frac{p!}{\pi^p}\sum_{n,m\in\Z}(-1)^{nm}\,L_p\bigl(\pi(n^2+m^2)\bigr)\,e^{-\pi(n^2+m^2)/2}.
+\]
+The factorisation formula of Rodriguez Villegas and Zagier \cite[(23)]{VZ} with $a=1$,
+$\alpha=0$, $\mu=\nu=0$ and $z=i$ states that the
+right-hand side equals $\sqrt2\,(2\pi)^{-p}\,\eta_p^2$, where
+\[
+\eta_p=\sum_{n\in\Z}H_p\bigl(n\sqrt{2\pi}\bigr)\,e^{-\pi n^2}.
+\]
+
+\emph{Step 5: Hermite sums and $d(n)$.} Let $\Theta(u)=e^{\pi u^2/2}\sum_ne^{-\pi n^2+2\pi inu}$ be
+as in the proof of Proposition~\ref{prop:identify}. Since
+$e^{\pi u^2/2+2\pi inu}=e^{2xt-t^2}$ with $t=i\sqrt{\pi/2}\,u$ and $x=n\sqrt{2\pi}$, we get
+$\Theta^{(p)}(0)=(-\pi/2)^{p/2}\,\eta_p$, hence $\eta_p^2=(2/\pi)^p\,\Theta^{(p)}(0)^2$. Together
+with \eqref{eq:L-A} and Step~4,
+\begin{equation}\label{eq:L-Theta}
+L(\psi^{2p+1},p+1)=\frac{\sqrt2}{8\,p!\,\pi^{p-1}}\;\Theta^{(p)}(0)^2\qquad(p=2h\ge0).
+\end{equation}
+In the proof of Proposition~\ref{prop:identify} we showed $\Theta^{(2k)}(0)=0$ for odd $k$, which
+gives $L(\psi^{8n+5},4n+3)=0$ (the case $p=4n+2$), and
+$\Theta^{(4n)}(0)=\theta_3(1)\,d(n)\,(4\pi^2\Phi)^n$ with $4\pi^2\Phi=2\varpi^4$. Finally
+$\theta_3(1)=\Gamma(1/4)/(\sqrt2\,\pi^{3/4})$ \cite[Section~1]{Romik}, so
+$\theta_3(1)^2=\sqrt2\,\varpi/\pi$. Inserting this into \eqref{eq:L-Theta} with $p=4n$ gives
+\[
+L(\psi^{8n+1},4n+1)=\frac{\sqrt2}{8\,(4n)!\,\pi^{4n-1}}\cdot\frac{\sqrt2\,\varpi}{\pi}\cdot
+4^n\varpi^{8n}\,d(n)^2=\frac{\varpi^{8n+1}}{\pi^{4n}\,(4n)!}\,4^{n-1}\,d(n)^2 .\qedhere
+\]
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:Lvalue}]
+By Theorem~\ref{thm:Lvalue}, $L^{\mathrm{alg}}(n)=4^{n-1}d(n)^2$. The rest is
+Theorem~\ref{thm:main}.
+\end{proof}
+
+\begin{remark}\label{rem:Lcheck}
+The following parts of the proof were checked numerically to $60$ decimal digits for
+$p=2h\le20$ (script \texttt{l\_value\_proof\_check.py} in the directory \texttt{romik/}): the
+case of the factorisation formula used in Step~4; the expression of $A_p$ as a Laguerre sum;
+the combination of \eqref{eq:L-eis} and \eqref{eq:eis-theta}, with $L(\psi^{2p+1},p+1)$ computed
+independently; \eqref{eq:fricke}; \eqref{eq:L-A} and \eqref{eq:L-Theta}; and the formula for
+$\Theta^{(4n)}(0)$. The series $E_p(z,s)$ for $s\ne0$, the sums $P_0(s)$ and $P_2(s)$ and the
+recursion in Step~2 were not checked numerically. The statement of
+Theorem~\ref{thm:Lvalue} was checked for $n\le8$ against an independent computation of the
+central values:
+the Dirichlet coefficients of $L(\psi^j,s)$ were obtained from the numbers of points of
+$y^2=x^3-x$ modulo primes, the functional equation was checked numerically, and the central
+value was computed from the standard rapidly convergent series (script
+\texttt{hecke\_l\_check.py}). For the curves $y^2=x^3+x$ and $y^2=x^3+2x$ and the exponents
+$4n+1$, $n\le16$, the normalised central values computed in the same way agree to $60$ digits with
+squares of rational numbers of small height; for $y^2=x^3+x$ this is explained by
+\cite[Theorem~2.10]{Nomoto}.
+\end{remark}
+
+\section{Numerical data and remarks}\label{sec:numerics}
+
+\subsection{Data} We computed $d(n)$ for $n\le800$ in two ways, from an integer recursion for the
+derivatives of $\theta_3$ at $\tau=i$ and from Proposition~\ref{prop:identify} with exact
+rational arithmetic; the two computations agree. For $n\le200$ the values also satisfy Romik's
+recursion $v(n)=\sum_{k\le n}r(n,k)\,d(k)$ \cite[Theorem~7]{Romik}, \cite[(2.8)]{KM}, which
+involves neither theta functions nor Weierstrass functions. We checked
+Theorem~\ref{thm:main} for the $87$ primes $p\equiv3\pmod4$ below $1000$. For $68$ of them
+equality holds in (i) for every $n\le800$. For the remaining $19$ the classes $r$ with
+$p\mid d(r)$, $r<(p+1)/4$, are
+\begin{gather*}
+67\colon 7;\quad 71\colon 5,8,14,17;\quad 127\colon 7;\quad 239\colon 17;\quad 251\colon 62;\quad
+283\colon 4;\\
+347\colon 71;\quad 379\colon 8;\quad
+419\colon 61,70,96;\quad 439\colon 60;\quad 499\colon 36;\quad 503\colon 28;\\
+599\colon 133;\quad 607\colon 114;\quad 659\colon 96,151;\quad
+743\colon 31,181;\quad 859\colon 84;\\
+919\colon 184;\quad 967\colon 94,
+\end{gather*}
+and the $n\le800$ at which (i) is strict are exactly those in these classes. The congruence
+\eqref{eq:leading} was checked
+for $\sigma(z)/z$ and $\sigma(z)\sqrt{\wp(z)}$ up to degree $1200$ for $p\in\{3,7,11,19,23,31,43\}$.
+
+For the sequences $u(n)$ and $v(n)$, Theorem~\ref{thm:uv}, Lemma~\ref{lem:products} (degrees up to
+$12000$), Lemma~\ref{lem:B} ($e\le60$) and Remark~\ref{rem:split} were checked on the values for
+$n\le1200$ and all primes below $300$.
+
+\subsection{The excess} When $p\mid d(r)$, the excess
+$v_p(d(n))-v_p((4n)!)+v_p((pm)!)$ equals $v_p(d(r))$ at all data points with $p\notin\{67,71\}$.
+It is $2$ instead of $1$ at $(p,n)=(67,517),(71,53),(71,266),(71,692)$. We have no description of
+the excess.
+
+\subsection{Thresholds} Theorem~\ref{thm:main}(i) bounds from above the least $T$ with
+$d(n)\equiv0\pmod{p^e}$ for all $n\ge T$, and by (ii) the bound is sharp whenever the last $n$ with
+$v_p((4n)!)-\tau_{4n}<e$ has $p\nmid d(r)$. The threshold $\lceil ep^2/4\rceil$ of Corollary~\ref{cor:KM} is not
+always optimal: for $p=3$, $e=4$ the lower bound of Theorem~\ref{thm:main}(i) is at least $4$ for
+all $n\ge7$, while $\lceil ep^2/4\rceil=9$. \todo{state the optimal threshold in closed form, or
+drop this paragraph}
+
+\subsection{Other curves} For the curve $y^2=4x^3-g_3$ and primes $p\equiv2\pmod3$ the series
+$\sigma(z)/z$ lies in $K[[z^6]]$, and the analogue of Theorem~\ref{thm:sigma} holds numerically up
+to degree $1200$ for $p\in\{5,11,17,23,29,41\}$; the proof should go through with $4$ replaced by
+$6$, but we have not written it out. \todo{write it out or delete} For a general curve with
+supersingular reduction the argument breaks down at degree $2p$: there $L_\sigma$ is only a series
+in $z^2$, so Lemma~\ref{lem:ring}(d) does not apply, and the coefficient $b_{2p-1}/(2p)$ of
+$L_\sigma$ may have valuation $-1$, whereas hypothesis (c) of Proposition~\ref{prop:structure}
+requires valuation at least $1-\tau_{2p}=0$. We do not know the equality pattern in that case.
+
+\subsection{Relation to earlier work} The slope $p/(p^2-1)$ of $\tau_n$ is the valuation of the
+$p$-adic period of the formal group of a supersingular curve, and the radius of convergence of the
+$p$-adic sigma function was determined in \cite{BKY}; a numerical example is discussed at the end
+of the arXiv version of \cite{BK}. Divisibility of Bernoulli--Hurwitz numbers at supersingular
+primes goes back to Katz \cite{Katz}. Congruences for Taylor coefficients of modular forms at CM
+points were studied in \cite{LarsonSmith}, and the behaviour of $d(n)$ modulo primes
+$p\equiv1\pmod4$ in \cite{GMR,Wakhare}. The proof in \cite{KimLee} uses quasimodular forms and
+the proof in \cite{KM} uses Romik's recursion; neither uses formal groups.
+
+\subsection{Formal verification} The following parts have been formalised in Lean~4 with
+Mathlib (directory \texttt{lean/} of the accompanying repository \todo{repository URL}). All
+formal statements depend only on the standard axioms \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound}.
+
+\begin{enumerate}
+\item[(1)] \emph{The sequences $u(n)$ and $v(n)$: complete.} The files \texttt{Conj43.lean} and
+\texttt{VSeq.lean} define $u(n)$ and $v(n)$ by the recurrences of \cite[\S2]{KM},
+\begin{align*}
+u(n)&=\Pi_1(n)-\sum_{m<n}\binom{2n+1}{2m+1}\Pi_3(n-m)\,u(m),\\
+v(n)&=2^{n-1}\Pi_3(n)-\frac12\sum_{0<m<n}\binom{2n}{2m}v(m)\,v(n-m),
+\end{align*}
+and prove from them Theorem~\ref{thm:uv} and parts (i) and (ii) of Corollary~\ref{cor:KM43}, with
+no step left on paper. There Lemma~\ref{lem:products} is replaced by the inequalities
+$v_p\bigl(\prod_{l<j}(4l+a)\bigr)\ge v_p(j!)$ for $a\in\{1,3\}$ and
+$v_p(n!)\le2v_p(\lfloor n/2\rfloor!)+\lfloor\log_pn\rfloor$, and the power series argument by an
+induction on the recurrences. Lemma~\ref{lem:B} is in \texttt{Threshold.lean}.
+
+\item[(2)] \emph{Section~\ref{sec:ring}, for $K=\Q_p$ and series with rational coefficients.}
+Lemmas~\ref{lem:tau} and~\ref{lem:ineq}, the coefficient estimates of Lemma~\ref{lem:ring} that
+are used later (for example, Lemma~\ref{lem:ring}(c) in the form: if $x\in D$ and $x(0)=0$, then
+$\exp(px)-1\in pD$), and the conclusions of Proposition~\ref{prop:structure} that are used later: $fw\in D$ and the congruence
+\eqref{eq:leading} for $fw$ (theorems \texttt{factorisation} and \texttt{factorisation\_mul} in
+\texttt{Exp.lean}), where $f=\exp(L)$ is characterised by $f'=L'f$ and $f(0)=1$. The factorisation
+\eqref{eq:factor} is formalised in the form $f=V\exp(\nu y)(1+r)$ with $V\in\Lambda$ and $r\in pD$
+(theorem \texttt{exists\_factor}); the finer statements $V(0)=1$ and $r\in pJ$ are not part of
+the formal statement.
+
+\item[(3)] \emph{Theorems~\ref{thm:sigma} and~\ref{thm:main} and Corollary~\ref{cor:KM}, assuming
+the cited inputs.} Let $b_n$ be rational numbers, vanishing unless $n\equiv3\pmod4$, that satisfy
+the bounds of Theorem~\ref{thm:bky}(c), and let $f$, $w$ be power series with
+\[
+f(0)=1,\quad f'=\Bigl(\sum_nb_nz^n\Bigr)f,\qquad w(0)=1,\quad
+w^2=1-z^2\Bigl(\sum_nb_nz^n\Bigr)' .
+\]
+For the $b_n$ of $\zeta(z)=z^{-1}+\sum_nb_nz^n$ these are $f=\sigma(z)/z$ and
+$w=(z^2\wp(z))^{1/2}$, since $\wp=-\zeta'$. The theorems \texttt{sigma\_congruence}
+(\texttt{Sigma.lean}) and \texttt{theta\_congruence} (\texttt{Theta.lean}) state that $f$ and $fw$
+lie in $D$ and satisfy \eqref{eq:leading} with $\nu=p\,b_p/(p+1)$; they do not assert that $\nu$
+is a unit. The theorem
+\texttt{romik\_main} assumes in addition $v_p(b_p)=-1$ and a sequence $d$ with
+$d(k)=(4k)!\,2^{-k}\,[z^{4k}](fw)$ for all $k$, which is the statement of
+Proposition~\ref{prop:identify}, and concludes Theorem~\ref{thm:main}(i), the criterion for
+equality in Theorem~\ref{thm:main}(ii) and Corollary~\ref{cor:KM}. The bound for the coefficients
+of $\wp$ in Theorem~\ref{thm:bky}(b) is not assumed; what is needed of it is deduced from
+Theorem~\ref{thm:bky}(c).
+\end{enumerate}
+
+Not formalised: the results quoted from \cite{BKY} as Theorem~\ref{thm:bky}(c) and
+Proposition~\ref{prop:identify}, which enter (3) as hypotheses, and all of
+Section~\ref{sec:Lvalues}. The script
+\texttt{lean\_hypotheses\_check.py} in the directory \texttt{romik/} checks every hypothesis of
+\texttt{romik\_main} on the actual coefficients, to degree $1200$ in $z$ and for all primes
+$p\equiv3\pmod4$ below $1200$.
+
+\section*{Acknowledgements and use of AI}
+
+This work was prompted by the proof of the Riemann hypothesis by Alp\"oge and Claude
+\todo{reference}. The formula in Theorem~\ref{thm:main} was found numerically while studying the
+estimates at inert primes in the Lean development accompanying that proof. The proofs given here
+do not depend on that development.
+
+The author chose the direction of the project and its workflow: numerical experiment, literature
+check, written proof, and formalisation of the elementary part. The numerical experiments, the
+literature search, the proofs, the text of this paper and the Lean formalisation were produced by
+Claude (Anthropic) under the author's direction. \todo{say which parts have been checked
+independently, and by whom}
+
+% ---------------------------------------------------------------------------------------------
+% Open items for this draft
+%  1. Author name; reference for the Alpoge--Claude proof; who has checked the proofs.
+%  2. Repository URL; the two \todo items in Section 6 (optimal thresholds, the curve y^2 = 4x^3 - g_3).
+% ---------------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99}
+
+\bibitem{BK} K.~Bannai and S.~Kobayashi, Algebraic theta functions and the $p$-adic interpolation
+of Eisenstein--Kronecker numbers, \emph{Duke Math.\ J.} \textbf{153} (2010), 229--295.
+
+\bibitem{BKY} K.~Bannai, S.~Kobayashi and S.~Yasuda, The radius of convergence of the $p$-adic
+sigma function, \emph{Math.\ Z.} \textbf{286} (2017), 751--781.
+
+\bibitem{BHKO} A.~Burungale, W.~He, S.~Kobayashi and K.~Ota, Hecke $L$-values, definite Shimura
+sets and mod $\ell$ non-vanishing, preprint, arXiv:2408.13932.
+
+\bibitem{BKO} A.~Burungale, S.~Kobayashi and K.~Ota, The $p$-adic valuation of local resolvents,
+generalized Gauss sums and anticyclotomic Hecke $L$-values of imaginary quadratic fields at inert
+primes, preprint, arXiv:2507.08221.
+
+\bibitem{DLMF} \emph{NIST Digital Library of Mathematical Functions}, Chapter~23,
+\url{https://dlmf.nist.gov/23}.
+
+\bibitem{GMR} P.~Guerzhoy, M.~H.~Mertens and L.~Rolen, Periodicities for Taylor coefficients of
+half-integral weight modular forms, \emph{Pacific J.\ Math.} \textbf{307} (2020), 137--157.
+
+\bibitem{IR} K.~Ireland and M.~Rosen, \emph{A Classical Introduction to Modern Number Theory},
+2nd ed., Graduate Texts in Mathematics \textbf{84}, Springer, 1990.
+
+\bibitem{Katz} N.~M.~Katz, Divisibilities, congruences, and Cartier duality, \emph{J.\ Fac.\ Sci.\
+Univ.\ Tokyo Sect.\ IA Math.} \textbf{28} (1981), no.~3, 667--678.
+
+\bibitem{KimLee} J.~Kim and Y.~Lee, $p$-adic properties for Taylor coefficients of half-integral
+weight modular forms on $\Gamma_1(4)$, \emph{Taiwanese J.\ Math.} \textbf{27} (2023), no.~1,
+23--38.
+
+\bibitem{KM} C.~Krattenthaler and T.~W.~M\"uller, The congruence properties of Romik's sequence of
+Taylor coefficients of Jacobi's theta function $\theta_3$, preprint, arXiv:2304.11471v4, 2024.
+
+\bibitem{LarsonSmith} H.~Larson and G.~Smith, Congruence properties of Taylor coefficients of
+modular forms, \emph{Int.\ J.\ Number Theory} \textbf{10} (2014), 1501--1518.
+
+\bibitem{Nomoto} K.~Nomoto, The rank of a CM elliptic curve and a recurrence formula, preprint,
+arXiv:2103.08947.
+
+\bibitem{Romik} D.~Romik, The Taylor coefficients of the Jacobi theta constant $\theta_3$,
+\emph{Ramanujan J.} \textbf{52} (2020), 275--290.
+
+\bibitem{Scherer} R.~Scherer, Congruences modulo primes of the Romik sequence related to the Taylor
+expansion of the Jacobi theta constant $\theta_3$, \emph{Ramanujan J.} \textbf{54} (2021),
+427--448.
+
+\bibitem{VZ} F.~Rodriguez Villegas and D.~Zagier, Square roots of central values of Hecke
+$L$-series, in: \emph{Advances in Number Theory} (Kingston, ON, 1991), Oxford Univ.\ Press, 1993,
+81--99.
+
+\bibitem{Wakhare} T.~Wakhare, Romik's conjecture for the Jacobi theta function, \emph{J.\ Number
+Theory} \textbf{215} (2020), 275--296.
+
+\end{thebibliography}
+
+\end{document}
