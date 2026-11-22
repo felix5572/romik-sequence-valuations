@@ -4,6 +4,8 @@ Paper draft, numerical checks and a Lean 4 formalisation concerning the p-adic v
 Romik's sequence d(n) = 1, 1, -1, 51, 849, -26199, ..., the Taylor coefficients of the Jacobi
 theta constant θ₃ at the CM point τ = i, at primes p ≡ 3 (mod 4).
 
+Author: Fengbo Yuan (Department of Physics, University of Alabama at Birmingham).
+
 Status: draft. It has not been peer reviewed.
 
 ## Contents
@@ -64,3 +66,7 @@ times are approximate):
     python3 l_value_proof_check.py d800.pkl 10       # the steps in the proof of Theorem 7.1 (2 s)
 
 Every script stops with an error if a check fails.
+
+## License
+
+MIT; see `LICENSE`.
