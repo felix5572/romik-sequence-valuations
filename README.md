@@ -8,6 +8,8 @@ Author: Fengbo Yuan (Department of Physics, University of Alabama at Birmingham)
 
 Status: draft. It has not been peer reviewed.
 
+Archived version: v1.0.0, https://doi.org/10.5281/zenodo.24448191
+
 ## Contents
 
 | Path | What it is |

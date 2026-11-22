@@ -8,6 +8,10 @@ authors:
     affiliation: "Department of Physics, University of Alabama at Birmingham"
     email: yuanf@uab.edu
 repository-code: "https://github.com/felix5572/romik-sequence-valuations"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24448191
+    description: "Archived version v1.0.0"
 license: MIT
 keywords:
   - Jacobi theta function
