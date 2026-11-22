@@ -23,7 +23,7 @@ Numbers on the left refer to the earlier paper; numbers on the right refer to
 |---|---|
 | Definition of d(n) | The object of the paper. |
 | Section 8, Problem 2: congruences for d(n) modulo higher powers of primes | Theorem 1.1 gives, for p ≡ 3 (mod 4), a lower bound for v_p(d(n)) and the condition for equality. |
-| Section 8, Problem 3: connections between such Taylor coefficients and other problems in number theory | Theorem 7.1: d(n)² is, up to an explicit factor, the central value L(ψ^(8n+1), 4n+1) for the Hecke character ψ of y² = x³ − x. |
+| Section 8, Problem 3: integer sequences from Taylor coefficients of other modular forms, and their connections with number theory | Not addressed. For d(n) itself, Theorem 7.1 shows that d(n)² occurs, with an explicit factor, in the central value L(ψ^(8n+1), 4n+1) for the Hecke character ψ of y² = x³ − x. |
 | Theorem 7: the recursion v(n) = Σ r(n,k) d(k) | Used as an independent numerical check of Proposition 4.1 (`romik/recursion_check.py`). |
 
 ## K. Bannai, S. Kobayashi and S. Yasuda, Math. Z. 286 (2017)
