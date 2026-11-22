@@ -346,8 +346,8 @@ Theorem~\ref{thm:bky}(a).
 
 From now on we assume $p\equiv3\pmod4$, $g_3=0$ and $g_2\in\cO^\times$. Then $E$ has good
 supersingular reduction: the discriminant is $g_2^3$ up to a power of $2$, and the Hasse invariant
-is the coefficient of $x^{p-1}$ in $x^{(p-1)/2}(4x^2-g_2)^{(p-1)/2}$, which vanishes because
-$(p-1)/2$ is odd. Moreover $\sigma(z)\in zK[[z^4]]$ and $z^2\wp(z)\in K[[z^4]]$ by
+is the coefficient of $x^{p-1}$ in $x^{(p-1)/2}(4x^2-g_2)^{(p-1)/2}$
+\cite[Chapter~V, Theorem~4.1]{Silverman}, which vanishes because $(p-1)/2$ is odd. Moreover $\sigma(z)\in zK[[z^4]]$ and $z^2\wp(z)\in K[[z^4]]$ by
 \cite[(3)]{BKY}, and $e=0$ is a root of $4x^3-g_2x$.
 
 \begin{remark}\label{rem:three}
@@ -633,7 +633,7 @@ is odd, $b$ is even and $a+b\equiv1\pmod4$. For odd $j\ge1$ the function
 \[
 L(\psi^j,s)=\sum_{\alpha\equiv1\ (2+2i)}\frac{\alpha^j}{N(\alpha)^s}\qquad(\operatorname{Re}s>\tfrac j2+1)
 \]
-continues to an entire function of $s$, with centre $s=(j+1)/2$. Let $\varpi$ be as in
+continues to an entire function of $s$ \cite{Hecke18}, with centre $s=(j+1)/2$. Let $\varpi$ be as in
 Section~\ref{sec:romik}.
 
 \begin{theorem}\label{thm:Lvalue}
@@ -644,7 +644,7 @@ L\bigl(\psi^{8n+1},\,4n+1\bigr)\;=\;\frac{\varpi^{8n+1}}{\pi^{4n}\,(4n)!}\;4^{\,
 \]
 \end{theorem}
 
-For $n=0$ this is the classical value $L(\psi,1)=\varpi/4$.
+For $n=0$ this reads $L(\psi,1)=\varpi/4$.
 
 \begin{corollary}\label{cor:Lvalue}
 Put $L^{\mathrm{alg}}(n)=\pi^{4n}(4n)!\,L(\psi^{8n+1},4n+1)/\varpi^{8n+1}\in\Q$. Then
@@ -670,6 +670,8 @@ for a Hecke character of $\Q(\sqrt{-7})$, and its proof follows the proof of
 \cite[Theorem~2.10]{Nomoto}, where Nomoto treats the curve $y^2=x^3+x$ and the theta function
 $\theta_2$. The connection between Taylor coefficients at CM points and $L$-values is mentioned
 as background in \cite{Romik,GMR,KM}, but we have not found Theorem~\ref{thm:Lvalue} stated there.
+For Taylor expansions of modular forms at CM points in general see
+\cite[Sections~5.1 and~6.3]{Zagier}.
 
 \subsection*{Notation} For $z=x+iy$ in the upper half plane let $D=\frac1{2\pi i}\frac{d}{dz}$,
 $\partial_k=D-\frac{k}{4\pi y}$ and
@@ -692,7 +694,7 @@ Dirichlet character modulo $4$ and, for $\operatorname{Re}s>\frac12$,
 \[
 E_p(z,s)=\frac12\sum_{(n,m)\ne(0,0)}\epsilon(n)\,\frac{(n+4m\bar z)^{2p+1}}{|n+4mz|^{2p+2+2s}} .
 \]
-By Hecke, $E_p(z,s)$ continues analytically to $s=0$ (see Step~2); put $E_p(z)=E_p(z,0)$. We have
+By Hecke's method \cite{Hecke27}, $E_p(z,s)$ continues analytically to $s=0$ (see Step~2); put $E_p(z)=E_p(z,0)$. We have
 $E_p(i,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and $b\equiv0\pmod4$, and
 $E_p(i/2,s)=\frac12\sum\epsilon(a)\Lambda_s(a+bi)$ over odd $a$ and even $b$. Let $P_0(s)$ and
 $P_2(s)$ be the sums of $\Lambda_s(\alpha)$ over the $\alpha=a+bi\equiv1\pmod{2+2i}$ with
@@ -711,7 +713,8 @@ L(\psi^{2p+1},p+1)=2E_p(i)-E_p(i/2).
 
 \emph{Step 2: Eisenstein series and $\vartheta_K$.} For $p=0$, Hecke's identity
 $E_0(z)=\frac\pi4\vartheta_K(z)$ holds (see \cite[proof of Proposition~2.7]{Nomoto}; it is
-equivalent to $r_2(N)=4\sum_{d\mid N}\epsilon(d)$). Applying $\partial_1^{(p)}$, by
+equivalent to Jacobi's formula $r_2(N)=4\sum_{d\mid N}\epsilon(d)$ for the number of
+representations of $N$ as a sum of two squares \cite[Theorem~278]{HW}). Applying $\partial_1^{(p)}$, by
 \cite[(16)]{VZ},
 \begin{equation}\label{eq:eis-theta}
 \frac\pi4\,\partial_1^{(p)}\vartheta_K(z)=\frac{p!}{(4\pi y)^p}\,E_p(z).
@@ -863,15 +866,16 @@ requires valuation at least $1-\tau_{2p}=0$. We do not know the equality pattern
 
 \subsection{Relation to earlier work} The slope $p/(p^2-1)$ of $\tau_n$ is the valuation of the
 $p$-adic period of the formal group of a supersingular curve, and the radius of convergence of the
-$p$-adic sigma function was determined in \cite{BKY}; a numerical example is discussed at the end
-of the arXiv version of \cite{BK}. Divisibility of Bernoulli--Hurwitz numbers at supersingular
+$p$-adic sigma function \cite{MT} was determined in \cite{BKY}; a numerical example is discussed at the end
+of the arXiv version of \cite{BK}. The coefficients of the lemniscatic $\wp$-function were
+studied by Hurwitz \cite{Hurwitz}, and divisibility of Bernoulli--Hurwitz numbers at supersingular
 primes goes back to Katz \cite{Katz}. Congruences for Taylor coefficients of modular forms at CM
 points were studied in \cite{LarsonSmith}, and the behaviour of $d(n)$ modulo primes
 $p\equiv1\pmod4$ in \cite{GMR,Wakhare}. The proof in \cite{KimLee} uses quasimodular forms and
 the proof in \cite{KM} uses Romik's recursion; neither uses formal groups.
 
-\subsection{Formal verification} The following parts have been formalised in Lean~4 with
-Mathlib (directory \texttt{lean/} of the accompanying repository
+\subsection{Formal verification} The following parts have been formalised in Lean~4
+\cite{Lean4} with Mathlib \cite{Mathlib} (directory \texttt{lean/} of the accompanying repository
 \url{https://github.com/felix5572/romik-sequence-valuations}). All
 formal statements depend only on the standard axioms \texttt{propext}, \texttt{Classical.choice}
 and \texttt{Quot.sound}.
@@ -972,6 +976,19 @@ primes, preprint, arXiv:2507.08221.
 \bibitem{GMR} P.~Guerzhoy, M.~H.~Mertens and L.~Rolen, Periodicities for Taylor coefficients of
 half-integral weight modular forms, \emph{Pacific J.\ Math.} \textbf{307} (2020), 137--157.
 
+\bibitem{HW} G.~H.~Hardy and E.~M.~Wright, \emph{An Introduction to the Theory of Numbers}, 6th
+ed., Oxford University Press, 2008.
+
+\bibitem{Hecke18} E.~Hecke, Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der
+Primzahlen, \emph{Math.\ Z.} \textbf{1} (1918), 357--376; \textbf{6} (1920), 11--51.
+
+\bibitem{Hecke27} E.~Hecke, Theorie der Eisensteinschen Reihen h\"oherer Stufe und ihre Anwendung auf
+Funktionentheorie und Arithmetik, \emph{Abh.\ Math.\ Sem.\ Univ.\ Hamburg} \textbf{5} (1927),
+199--224.
+
+\bibitem{Hurwitz} A.~Hurwitz, \"Uber die Entwicklungskoeffizienten der lemniskatischen Funktionen,
+\emph{Math.\ Ann.} \textbf{51} (1899), 196--226.
+
 \bibitem{IR} K.~Ireland and M.~Rosen, \emph{A Classical Introduction to Modern Number Theory},
 2nd ed., Graduate Texts in Mathematics \textbf{84}, Springer, 1990.
 
@@ -988,6 +1005,17 @@ Taylor coefficients of Jacobi's theta function $\theta_3$, preprint, arXiv:2304.
 \bibitem{LarsonSmith} H.~Larson and G.~Smith, Congruence properties of Taylor coefficients of
 modular forms, \emph{Int.\ J.\ Number Theory} \textbf{10} (2014), 1501--1518.
 
+\bibitem{Mathlib} The mathlib Community, The Lean mathematical library, in: \emph{Proceedings of the
+9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2020)}, ACM, 2020,
+367--381.
+
+\bibitem{MT} B.~Mazur and J.~Tate, The $p$-adic sigma function, \emph{Duke Math.\ J.} \textbf{62}
+(1991), no.~3, 663--688.
+
+\bibitem{Lean4} L.~de~Moura and S.~Ullrich, The Lean~4 theorem prover and programming language, in:
+\emph{Automated Deduction -- CADE 28}, Lecture Notes in Comput.\ Sci.\ \textbf{12699}, Springer,
+2021, 625--635.
+
 \bibitem{Nomoto} K.~Nomoto, The rank of a CM elliptic curve and a recurrence formula, preprint,
 arXiv:2103.08947.
 
@@ -998,12 +1026,18 @@ arXiv:2103.08947.
 expansion of the Jacobi theta constant $\theta_3$, \emph{Ramanujan J.} \textbf{54} (2021),
 427--448.
 
+\bibitem{Silverman} J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves}, 2nd ed., Graduate
+Texts in Mathematics \textbf{106}, Springer, 2009.
+
 \bibitem{VZ} F.~Rodriguez Villegas and D.~Zagier, Square roots of central values of Hecke
 $L$-series, in: \emph{Advances in Number Theory} (Kingston, ON, 1991), Oxford Univ.\ Press, 1993,
 81--99.
 
 \bibitem{Wakhare} T.~Wakhare, Romik's conjecture for the Jacobi theta function, \emph{J.\ Number
 Theory} \textbf{215} (2020), 275--296.
+
+\bibitem{Zagier} D.~Zagier, Elliptic modular forms and their applications, in: \emph{The 1-2-3 of
+Modular Forms}, Universitext, Springer, 2008.
 
 \end{thebibliography}
 
