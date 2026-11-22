@@ -15,7 +15,7 @@ Numbers on the left refer to the earlier paper; numbers on the right refer to
 | Remark after Conjecture 43, (1): p divides u(n) for n ≥ (p²−p)/2 | Follows from their Lemma 7 and Proposition 8 (Corollary 1.6(iii)). |
 | Remark after Conjecture 43, (2): p⁶ divides u(n) for n ≥ (3p²−1)/2 | Does not hold for p = 7, 11, 19, 23: v_p(u(n)) = 5 at n = (3p²+p−2)/2, for example v_7(u(76)) = 5 (Remark 6.4). |
 | Conjecture 44(2): p^e divides v(n) for n ≥ ⌈ep²/4⌉, e even, "with very few exceptions" | One more exception: (p, e) = (3, 4), since v_3(v(10)) = 3 (Remark 6.4). Theorem 1.5 gives a general lower bound for v_p(v(n)); it does not prove Conjecture 44. |
-| Their threshold ⌈(e−1)p²/2⌉ for d(n) ≡ 0 (mod p^e) | Replaced by the exact lower bound of Theorem 1.1. The threshold ⌈ep²/4⌉ of Conjecture 45 is sufficient but not always the least one: for p = 3, e = 4 the congruence holds from n = 7 on (Section 8.3). |
+| Their threshold ⌈(e−1)p²/2⌉ for d(n) ≡ 0 (mod p^e), e ≥ 2 | Replaced by the exact lower bound of Theorem 1.1. The threshold ⌈ep²/4⌉ of Conjecture 45 is sufficient but not always the least one: for p = 3, e = 4 the congruence holds from n = 7 on (Section 8.3). |
 
 ## D. Romik, Ramanujan J. 52 (2020), arXiv:1807.06130
 
@@ -38,7 +38,7 @@ Numbers on the left refer to the earlier paper; numbers on the right refer to
 
 | His statement | Here |
 |---|---|
-| Theorem 2.10: for the Hecke character of y² = x³ + x, L(ψ^(2k−1), k) is an explicit multiple of the squared absolute value of a derivative of θ₂ at τ = i | Theorem 7.1 is the corresponding statement for y² = x³ − x and θ₃, and its proof follows his. |
+| Theorem 2.10: for the Hecke character of y² = x³ + x, L(ψ^(2k−1), k) is an explicit multiple of the squared absolute value of a derivative of θ₂ at τ = i when k is odd, and vanishes when k is even | Theorem 7.1 is the corresponding statement for y² = x³ − x and θ₃: the exponents 8n+1 and 8n+5, that is all j ≡ 1 (mod 4), with a square in the first case and vanishing in the second. Its proof follows his. |
 
 ## F. Rodriguez Villegas and D. Zagier, Advances in Number Theory (1993)
 
@@ -58,4 +58,4 @@ Numbers on the left refer to the earlier paper; numbers on the right refer to
 | Paper | Result | Here |
 |---|---|---|
 | R. Scherer, Ramanujan J. 54 (2021) | d(n) ≡ 0 (mod p) for n > (p²−1)/2 | Corollary 1.3: d(n) ≡ 0 (mod p) for n > (p²−1)/4, and p does not divide d((p²−1)/4). |
-| J. Kim and Y. Lee, Taiwanese J. Math. 27 (2023); Krattenthaler–Müller | d(n) ≡ 0 (mod p^e) for n ≥ ⌈(e−1)p²/2⌉, e ≥ 2 | Corollary 1.2: n ≥ ⌈ep²/4⌉. |
+| J. Kim and Y. Lee, Taiwanese J. Math. 27 (2023), for p ≥ 5; Krattenthaler–Müller | d(n) ≡ 0 (mod p^e) for n ≥ ⌈(e−1)p²/2⌉, e ≥ 2 | Corollary 1.2: n ≥ ⌈ep²/4⌉. |
