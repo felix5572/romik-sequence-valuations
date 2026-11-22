@@ -24,6 +24,7 @@
 \title[Valuations of Romik's sequence]{The $p$-adic valuation of Romik's sequence\\ at primes $p\equiv 3 \pmod 4$}
 \author{Fengbo Yuan}
 \address{Department of Physics, University of Alabama at Birmingham}
+\email{yuanf@uab.edu}
 \date{Draft of 22 November 2026}
 
 \begin{document}
@@ -928,10 +929,10 @@ $p\equiv3\pmod4$ below $1200$.
 
 \section*{Acknowledgements and use of AI}
 
-This work was prompted by the proof of the Riemann hypothesis by Alp\"oge and Claude
-\todo{reference}. The formula in Theorem~\ref{thm:main} was found numerically while studying the
-estimates at inert primes in the Lean development accompanying that proof. The proofs given here
-do not depend on that development.
+This work was prompted by the proof of the Riemann hypothesis announced by Alp\"oge, working
+with Claude \cite{Alpoge}. The formula in Theorem~\ref{thm:main} was found numerically in the
+course of reading an unsigned expository companion to that proof \cite{Companion}. We have not
+studied the Lean source of that proof, and the proofs given here do not depend on it.
 
 The author chose the direction of the project and its workflow: numerical experiment, literature
 check, written proof, and formalisation of the elementary part. The numerical experiments, the
@@ -941,11 +942,18 @@ independently, and by whom}
 
 % ---------------------------------------------------------------------------------------------
 % Open items for this draft
-%  1. Author email; reference for the Alpoge--Claude proof; who has checked the proofs.
+%  1. Where the companion [Companion] is available; who has checked the proofs.
 %  2. The two \todo items in Section 8 (optimal thresholds, the curve y^2 = 4x^3 - g_3).
 % ---------------------------------------------------------------------------------------------
 
 \begin{thebibliography}{99}
+
+\bibitem{Alpoge} L.~Alp\"oge, announcement of a proof of the Riemann hypothesis (untitled, four
+pages), 20 November 2026, \url{https://alpo.ge/remark.pdf}.
+
+\bibitem{Companion} [Unsigned], Dirichlet $L$-functions and the critical line, expository
+companion to the Lean development of \cite{Alpoge}, 23 pages, November 2026.
+\todo{where this document is available}
 
 \bibitem{BK} K.~Bannai and S.~Kobayashi, Algebraic theta functions and the $p$-adic interpolation
 of Eisenstein--Kronecker numbers, \emph{Duke Math.\ J.} \textbf{153} (2010), 229--295.
