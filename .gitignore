@@ -2,8 +2,9 @@ __pycache__/
 *.pyc
 *:Zone.Identifier
 
-# compiled documents are not tracked
+# compiled documents are not tracked, except the paper itself
 *.pdf
+!paper/romik-valuation.pdf
 
 # LaTeX build files
 paper/*.aux
