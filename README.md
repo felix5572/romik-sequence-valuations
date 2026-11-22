@@ -15,6 +15,7 @@ Status: draft. It has not been peer reviewed.
 | `paper/romik-valuation.tex` | The paper. Build with `latexmk -pdf romik-valuation.tex`. |
 | `lean/` | Lean 4 + Mathlib formalisation. See `lean/README.md` for the correspondence with the paper. |
 | `romik/` | Python scripts for the numerical checks quoted in the paper, and `d800.pkl`, the values d(0), ..., d(800). |
+| `relation-to-prior-work.md` | For each earlier paper, the statements in it that this work proves, uses, sharpens or corrects. |
 
 ## Statements
 
